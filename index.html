@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OGPHOTOS — Sayulita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --jungle:#1B3A2D;--jungle2:#254D3C;--jungle3:#163326;
+  --moss:#3D6B50;--leaf:#5C8C65;--sage:#8FB59A;
+  --raw:#F0EBE1;--raw2:#E8DFD0;--raw3:#D4C9B5;
+  --bone:#FAF7F0;--ink:#141810;
+  --clay:#C17F52;--clay2:#A6663C;--gold:#D4A853;
+  --mist:rgba(240,235,225,0.08);--mist2:rgba(240,235,225,0.15);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Syne',sans-serif;background:var(--raw);color:var(--ink);overflow-x:hidden;cursor:none;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:900;opacity:.5;}
+.cursor{position:fixed;width:9px;height:9px;background:var(--clay);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply;}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid var(--moss);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease-out,top .1s ease-out;mix-blend-mode:multiply;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:28px 64px;transition:all .5s;}
+nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:17px 64px;border-bottom:1px solid var(--mist2);}
+.nav-logo{font-family:'Fraunces',serif;font-size:17px;font-weight:300;letter-spacing:.32em;color:var(--bone);text-decoration:none;}
+.nav-r{display:flex;align-items:center;gap:36px;}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:rgba(250,247,240,.55);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--bone);}
+.lang-toggle{display:flex;border:1px solid var(--mist2);border-radius:2px;overflow:hidden;}
+.lang-btn{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.14em;background:transparent;border:none;color:rgba(250,247,240,.4);padding:6px 11px;cursor:none;transition:all .2s;}
+.lang-btn.active{background:var(--jungle2);color:var(--bone);}
+.nav-book{font-size:10px;letter-spacing:.18em;text-transform:uppercase;background:var(--clay);color:var(--bone);padding:11px 26px;border-radius:2px;text-decoration:none;transition:background .2s;}
+.nav-book:hover{background:var(--clay2);}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--jungle3);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 64px 88px;}
+.hero-wash{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 72% 28%,rgba(92,140,101,.22) 0%,transparent 65%),radial-gradient(ellipse 45% 70% at 18% 82%,rgba(193,127,82,.13) 0%,transparent 55%);pointer-events:none;}
+.hero-botanical{position:absolute;inset:0;opacity:.065;pointer-events:none;}
+.hero-content{position:relative;z-index:2;max-width:880px;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(143,181,154,.32);padding:7px 17px;border-radius:100px;margin-bottom:44px;opacity:0;animation:up 1s .15s forwards;}
+.hero-tag span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);}
+.hero-dot{width:5px;height:5px;background:var(--leaf);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.5);}}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(58px,8vw,118px);font-weight:200;line-height:.95;color:var(--bone);margin-bottom:48px;opacity:0;animation:up 1s .38s forwards;}
+.hero-title .outline{-webkit-text-stroke:1px rgba(143,181,154,.38);color:transparent;display:block;}
+.hero-title em{font-style:italic;color:var(--sage);display:block;}
+.hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap;opacity:0;animation:up 1s .65s forwards;}
+.hero-desc{font-size:15px;line-height:1.72;color:rgba(250,247,240,.5);max-width:360px;}
+.hero-acts{display:flex;flex-direction:column;align-items:flex-end;gap:14px;}
+.btn-j{display:inline-flex;align-items:center;gap:12px;background:var(--leaf);color:var(--bone);padding:15px 34px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .2s,gap .2s;}
+.btn-j:hover{background:var(--moss);gap:18px;}
+.btn-ghost{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,240,.38);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.btn-ghost:hover{color:var(--bone);}
+.hero-stats{position:absolute;right:64px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:28px;z-index:2;opacity:0;animation:up 1s 1s forwards;}
+.hs-n{font-family:'Fraunces',serif;font-size:34px;font-weight:200;color:var(--bone);line-height:1;text-align:right;}
+.hs-l{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(143,181,154,.45);margin-top:4px;text-align:right;}
+.hero-scroll{position:absolute;right:64px;bottom:52px;writing-mode:vertical-rl;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(143,181,154,.35);display:flex;align-items:center;gap:14px;z-index:2;}
+.hero-scroll::after{content:'';display:block;width:1px;height:56px;background:linear-gradient(to bottom,rgba(143,181,154,.35),transparent);}
+@keyframes up{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* MARQUEE */
+.mq{background:var(--jungle2);padding:14px 0;overflow:hidden;border-top:1px solid rgba(143,181,154,.1);border-bottom:1px solid rgba(143,181,154,.1);}
+.mq-track{display:flex;animation:mq 22s linear infinite;width:max-content;}
+.mq-item{display:flex;align-items:center;gap:28px;padding:0 36px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(143,181,154,.45);white-space:nowrap;}
+.mq-dot{width:3px;height:3px;background:var(--leaf);border-radius:50%;flex-shrink:0;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* SECTION */
+.pad{padding:112px 64px;}
+.eyebrow{font-size:10px;letter-spacing:.27em;text-transform:uppercase;color:var(--leaf);margin-bottom:22px;display:flex;align-items:center;gap:13px;}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--leaf);flex-shrink:0;}
+.h2{font-family:'Fraunces',serif;font-size:clamp(38px,4vw,66px);font-weight:200;line-height:1.05;color:var(--ink);margin-bottom:22px;}
+.h2 em{font-style:italic;color:var(--moss);}
+.h2-lt{color:var(--bone);}.h2-lt em{color:var(--sage);}
+.body{font-size:15px;line-height:1.75;color:#586055;max-width:490px;}
+.body-lt{color:rgba(250,247,240,.52);}
+
+/* ABOUT */
+.about{background:var(--bone);display:grid;grid-template-columns:1fr 1fr;min-height:78vh;}
+.about-l{background:var(--jungle);padding:96px 64px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;}
+.about-l::after{content:'OG';font-family:'Fraunces',serif;font-size:250px;font-weight:200;color:rgba(255,255,255,.022);position:absolute;bottom:-30px;right:-10px;line-height:1;pointer-events:none;}
+.about-l .eyebrow{color:var(--sage);}.about-l .eyebrow::before{background:var(--sage);}
+.about-q{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,42px);font-weight:200;font-style:italic;color:var(--bone);line-height:1.2;max-width:390px;}
+.about-q em{font-style:normal;color:var(--sage);}
+.about-nums{display:flex;gap:36px;margin-top:60px;}
+.an-n{font-family:'Fraunces',serif;font-size:40px;font-weight:200;color:var(--bone);line-height:1;}
+.an-l{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(143,181,154,.45);margin-top:5px;}
+.about-r{padding:96px 64px;display:flex;flex-direction:column;justify-content:center;}
+.about-body{margin-top:26px;font-size:15px;line-height:1.8;color:#586055;max-width:440px;}
+.pillars{display:flex;flex-direction:column;gap:1px;margin-top:44px;background:var(--raw3);}
+.pillar{background:var(--bone);padding:19px 22px;display:flex;gap:14px;align-items:center;transition:background .2s;}
+.pillar:hover{background:var(--raw);}
+.pillar-dot{width:7px;height:7px;background:var(--leaf);border-radius:50%;flex-shrink:0;}
+.pillar p{font-size:13px;color:#586055;line-height:1.4;}
+.pillar p strong{color:var(--ink);font-weight:600;}
+
+/* SERVICES */
+.services{background:var(--raw);padding:112px 64px;}
+.svc-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:72px;}
+.svc-list{display:flex;flex-direction:column;gap:2px;background:var(--raw3);}
+.svc{background:var(--bone);display:grid;grid-template-columns:72px 1fr auto;align-items:center;text-decoration:none;color:inherit;transition:background .22s;overflow:hidden;}
+.svc:hover{background:var(--jungle);}
+.svc:hover .svc-num{color:rgba(143,181,154,.25);border-right-color:rgba(255,255,255,.07);}
+.svc:hover .svc-name{color:var(--bone);}
+.svc:hover .svc-sub{color:rgba(143,181,154,.45);}
+.svc:hover .svc-price{color:var(--sage);}
+.svc:hover .svc-tag{background:rgba(143,181,154,.1);color:var(--sage);}
+.svc:hover .svc-arrow{color:var(--sage);}
+.svc-num{font-family:'Fraunces',serif;font-size:12px;font-weight:300;color:var(--raw3);padding:26px 22px;text-align:center;border-right:1px solid var(--raw3);transition:all .22s;align-self:stretch;display:flex;align-items:center;justify-content:center;}
+.svc-body{padding:22px 30px;display:flex;flex-direction:column;gap:5px;}
+.svc-name{font-family:'Fraunces',serif;font-size:21px;font-weight:300;color:var(--ink);transition:color .22s;line-height:1;}
+.svc-sub{font-size:11px;color:#8A9080;letter-spacing:.04em;transition:color .22s;}
+.svc-r{padding:22px 30px;display:flex;flex-direction:column;align-items:flex-end;gap:7px;}
+.svc-price{font-size:13px;color:var(--clay);font-weight:600;transition:color .22s;white-space:nowrap;}
+.svc-tag{font-size:9px;letter-spacing:.17em;text-transform:uppercase;background:var(--raw2);color:#8A9080;padding:4px 9px;border-radius:2px;transition:all .22s;white-space:nowrap;}
+.svc-arrow{font-size:16px;color:var(--raw3);transition:color .22s;}
+
+/* EXPERIENCES */
+.exp{background:var(--jungle3);padding:112px 64px;position:relative;overflow:hidden;}
+.exp::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 58% 48% at 78% 20%,rgba(92,140,101,.18) 0%,transparent 65%);pointer-events:none;}
+.exp-header{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:72px;}
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.03);}
+.exp-card{background:rgba(27,58,45,.58);border:1px solid rgba(143,181,154,.07);padding:50px 42px;position:relative;transition:background .3s;}
+.exp-card:hover{background:rgba(37,77,60,.78);border-color:rgba(143,181,154,.18);}
+.exp-num{font-family:'Fraunces',serif;font-size:68px;font-weight:200;color:rgba(143,181,154,.07);position:absolute;top:14px;right:24px;line-height:1;pointer-events:none;}
+.exp-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(143,181,154,.38);margin-bottom:18px;display:flex;align-items:center;gap:9px;}
+.exp-label::before{content:'';width:14px;height:1px;background:rgba(143,181,154,.28);}
+.exp-name{font-family:'Fraunces',serif;font-size:28px;font-weight:200;color:var(--bone);line-height:1.1;margin-bottom:16px;}
+.exp-name em{font-style:italic;color:var(--sage);}
+.exp-desc{font-size:13px;line-height:1.7;color:rgba(250,247,240,.42);max-width:360px;margin-bottom:26px;}
+.exp-price-row{display:flex;align-items:baseline;gap:10px;}
+.exp-price{font-family:'Fraunces',serif;font-size:24px;font-weight:200;color:var(--bone);}
+.exp-price-l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(143,181,154,.38);}
+.exp-cta{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);text-decoration:none;margin-top:22px;transition:gap .2s;}
+.exp-cta:hover{gap:15px;}
+.exp-cta::after{content:'→';}
+
+/* STAYS */
+.stays{background:var(--bone);padding:112px 64px;}
+.stays-inner{display:grid;grid-template-columns:5fr 4fr;gap:96px;align-items:start;}
+.stays-cards{display:flex;flex-direction:column;gap:2px;margin-top:48px;background:var(--raw3);}
+.stay-card{background:var(--bone);padding:28px 32px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;transition:all .24s;border-left:3px solid transparent;}
+.stay-card:hover{background:var(--jungle);border-left-color:var(--leaf);}
+.stay-card:hover .stay-name{color:var(--bone);}
+.stay-card:hover .stay-desc{color:rgba(250,247,240,.45);}
+.stay-card:hover .stay-badge{background:rgba(143,181,154,.1);color:var(--sage);}
+.stay-name{font-family:'Fraunces',serif;font-size:19px;font-weight:300;color:var(--ink);margin-bottom:5px;transition:color .24s;}
+.stay-desc{font-size:12px;color:#8A9080;line-height:1.5;transition:color .24s;}
+.stay-badge{font-size:9px;letter-spacing:.17em;text-transform:uppercase;background:var(--raw2);color:#8A9080;padding:5px 11px;border-radius:2px;white-space:nowrap;transition:all .24s;align-self:flex-start;}
+.stays-vis{position:sticky;top:112px;}
+.stays-img{width:100%;aspect-ratio:3/4;background:linear-gradient(158deg,var(--jungle2) 0%,var(--jungle3) 100%);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:32px;}
+.stays-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%,rgba(92,140,101,.28) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(193,127,82,.12) 0%,transparent 48%);}
+.stays-loc{position:relative;z-index:1;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(143,181,154,.45);}
+.stays-tag{position:absolute;top:24px;left:24px;background:rgba(22,51,38,.88);border:1px solid rgba(143,181,154,.18);backdrop-filter:blur(8px);padding:12px 18px;border-radius:4px;}
+.st-l{font-size:9px;letter-spacing:.19em;text-transform:uppercase;color:rgba(143,181,154,.45);margin-bottom:3px;}
+.st-v{font-family:'Fraunces',serif;font-size:20px;font-weight:200;color:var(--bone);line-height:1;}
+
+/* PRICING */
+.pricing{background:var(--raw);padding:112px 64px;}
+.pricing-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:72px;}
+.p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--raw3);}
+.p-card{background:var(--bone);padding:42px 34px;transition:background .28s;position:relative;}
+.p-card:hover{background:var(--raw);}
+.p-card.hot{background:var(--jungle);}
+.p-card.hot:hover{background:var(--jungle2);}
+.p-badge{position:absolute;top:0;left:34px;transform:translateY(-50%);background:var(--clay);color:var(--bone);font-size:9px;letter-spacing:.19em;text-transform:uppercase;padding:5px 13px;border-radius:2px;}
+.p-tier{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);margin-bottom:16px;}
+.p-card.hot .p-tier{color:var(--sage);}
+.p-name{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:28px;}
+.p-card.hot .p-name{color:var(--bone);}
+.p-div{height:1px;background:var(--raw3);margin-bottom:26px;}
+.p-card.hot .p-div{background:rgba(255,255,255,.08);}
+.p-amount{font-family:'Fraunces',serif;font-size:50px;font-weight:200;color:var(--ink);line-height:1;margin-bottom:5px;}
+.p-card.hot .p-amount{color:var(--bone);}
+.p-unit{font-size:11px;color:#8A9080;margin-bottom:28px;}
+.p-card.hot .p-unit{color:rgba(143,181,154,.45);}
+.p-feats{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:32px;}
+.p-feats li{font-size:13px;color:#586055;display:flex;gap:9px;line-height:1.4;}
+.p-card.hot .p-feats li{color:rgba(250,247,240,.58);}
+.p-feats li::before{content:'—';color:var(--leaf);flex-shrink:0;font-size:11px;}
+.p-card.hot .p-feats li::before{color:var(--sage);}
+.p-btn{display:block;text-align:center;padding:13px;border:1px solid var(--raw3);font-size:10px;letter-spacing:.19em;text-transform:uppercase;color:#586055;text-decoration:none;transition:all .2s;border-radius:2px;}
+.p-btn:hover{background:var(--jungle);color:var(--bone);border-color:var(--jungle);}
+.p-card.hot .p-btn{background:var(--leaf);color:var(--bone);border-color:transparent;}
+.p-card.hot .p-btn:hover{background:var(--moss);}
+
+/* TESTI */
+.testi{background:var(--jungle3);padding:112px 64px;}
+.testi-h{margin-bottom:68px;}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.03);}
+.t-card{background:rgba(27,58,45,.48);border:1px solid rgba(143,181,154,.06);padding:42px 34px;transition:background .28s;}
+.t-card:hover{background:rgba(37,77,60,.68);}
+.t-stars{display:flex;gap:3px;margin-bottom:22px;}
+.t-star{width:10px;height:10px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+.t-text{font-family:'Fraunces',serif;font-size:17px;font-style:italic;font-weight:200;color:rgba(250,247,240,.78);line-height:1.65;margin-bottom:30px;}
+.t-auth{display:flex;align-items:center;gap:12px;}
+.t-av{width:36px;height:36px;border-radius:50%;background:var(--jungle2);border:1px solid rgba(143,181,154,.18);flex-shrink:0;}
+.t-name{font-size:13px;font-weight:600;color:var(--bone);}
+.t-role{font-size:10px;letter-spacing:.07em;color:rgba(143,181,154,.4);margin-top:2px;}
+
+/* CTA */
+.cta{background:var(--leaf);padding:112px 64px;text-align:center;position:relative;overflow:hidden;}
+.cta::before{content:'OG';font-family:'Fraunces',serif;font-size:380px;font-weight:200;color:rgba(255,255,255,.035);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1;pointer-events:none;white-space:nowrap;}
+.cta .eyebrow{justify-content:center;color:rgba(250,247,240,.48);}.cta .eyebrow::before{background:rgba(250,247,240,.28);}
+.cta .h2{color:var(--bone);max-width:680px;margin:0 auto 18px;}.cta .h2 em{color:rgba(250,247,240,.55);}
+.cta .body{text-align:center;margin:0 auto 52px;color:rgba(250,247,240,.58);}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-cm{background:var(--jungle3);color:var(--bone);padding:17px 42px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background .2s;}
+.btn-cm:hover{background:var(--jungle);}
+.btn-cg{background:transparent;color:var(--bone);padding:17px 42px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-radius:2px;border:1px solid rgba(250,247,240,.28);transition:border-color .2s;}
+.btn-cg:hover{border-color:rgba(250,247,240,.8);}
+
+/* FOOTER */
+footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:60px;margin-bottom:38px;border-bottom:1px solid rgba(255,255,255,.055);}
+.ft-brand{font-family:'Fraunces',serif;font-size:28px;font-weight:200;letter-spacing:.12em;margin-bottom:16px;}
+.ft-tag{font-size:13px;line-height:1.7;color:rgba(250,247,240,.32);max-width:250px;}
+.ft-col h6{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(92,140,101,.55);margin-bottom:20px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.ft-col ul li a{font-size:13px;color:rgba(250,247,240,.32);text-decoration:none;transition:color .2s;}
+.ft-col ul li a:hover{color:var(--bone);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+.ft-copy{font-size:11px;color:rgba(250,247,240,.18);}
+.ft-soc{display:flex;gap:22px;}
+.ft-soc a{font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:rgba(250,247,240,.22);text-decoration:none;transition:color .2s;}
+.ft-soc a:hover{color:var(--bone);}
+
+/* BILINGUAL */
+[data-lang="en"] .es{display:none;}
+[data-lang="es"] .en{display:none;}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:22px 40px;}nav.scrolled{padding:14px 40px;}
+  .pad,.services,.exp,.stays,.pricing,.testi,.cta{padding-left:40px;padding-right:40px;}
+  .about,.stays-inner{grid-template-columns:1fr;}
+  .about-l,.about-r{padding:80px 40px;}
+  .svc-top,.exp-header,.pricing-top{grid-template-columns:1fr;gap:18px;}
+  .hero-stats,.hero-scroll{display:none;}
+}
+@media(max-width:768px){
+  .pad,.services,.exp,.stays,.pricing,.testi,.cta{padding:72px 24px;}
+  nav{padding:17px 24px;}nav.scrolled{padding:11px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:0 24px 56px;}
+  .about-l,.about-r{padding:60px 24px;}
+  .svc{grid-template-columns:58px 1fr;}
+  .svc-r{display:none;}
+  .exp-grid,.p-grid,.t-grid{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr;gap:30px;}
+  .ft-bot{flex-direction:column;align-items:flex-start;}
+  body{cursor:auto;}
+  .cursor,.cursor-ring{display:none;}
+}
+</style>
+</head>
+<body data-lang="es">
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">OGPHOTOS</a>
+  <div class="nav-r">
+    <ul class="nav-links">
+      <li><a href="#servicios"><span class="es">Servicios</span><span class="en">Services</span></a></li>
+      <li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li>
+      <li><a href="#stays">Stays</a></li>
+      <li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-l="es">ES</button>
+      <button class="lang-btn" data-l="en">EN</button>
+    </div>
+    <a href="https://ogphothos.pixieset.com/booking/" class="nav-book" target="_blank">
+      <span class="es">Reservar</span><span class="en">Book</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-botanical" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <path d="M700 900 Q640 680 480 580 Q320 480 150 370 Q80 320 0 270" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
+    <path d="M700 900 Q760 680 920 560 Q1080 440 1240 330 Q1320 280 1400 230" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
+    <path d="M480 580 Q455 535 395 508 Q335 481 270 450" stroke="#5C8C65" stroke-width=".75" fill="none"/>
+    <path d="M480 580 Q515 548 548 508 Q581 468 572 428" stroke="#5C8C65" stroke-width=".75" fill="none"/>
+    <path d="M920 560 Q944 528 996 500 Q1048 472 1082 432" stroke="#5C8C65" stroke-width=".75" fill="none"/>
+    <path d="M920 560 Q888 528 856 498 Q824 468 836 430" stroke="#5C8C65" stroke-width=".75" fill="none"/>
+    <ellipse cx="190" cy="140" rx="110" ry="55" stroke="#3D6B50" stroke-width=".7" fill="none" transform="rotate(-28 190 140)"/>
+    <ellipse cx="1210" cy="195" rx="130" ry="62" stroke="#3D6B50" stroke-width=".7" fill="none" transform="rotate(22 1210 195)"/>
+    <circle cx="480" cy="580" r="4" fill="#5C8C65" opacity=".35"/>
+    <circle cx="920" cy="560" r="4" fill="#5C8C65" opacity=".35"/>
+  </svg>
+  <div class="hero-wash"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-dot"></div>
+      <span class="es">Sayulita · Puerto Vallarta · Disponible</span>
+      <span class="en">Sayulita · Puerto Vallarta · Available</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="outline"><span class="es">Momentos</span><span class="en">Moments</span></span>
+      <em><span class="es">que quedan</span><span class="en">that last</span></em>
+      <span><span class="es">para siempre</span><span class="en">forever</span></span>
+    </h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        <span class="es">Fotografía, experiencias curadas y hospitalidad en la costa del Pacífico mexicano.</span>
+        <span class="en">Photography, curated experiences and hospitality on Mexico's Pacific coast.</span>
+      </p>
+      <div class="hero-acts">
+        <a href="#servicios" class="btn-j"><span class="es">Explorar servicios</span><span class="en">Explore services</span> →</a>
+        <a href="https://ogphothos.pixieset.com/booking/" class="btn-ghost" target="_blank"><span class="es">Agendar ahora</span><span class="en">Book now</span> ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div><div class="hs-n">200+</div><div class="hs-l"><span class="es">Clientes</span><span class="en">Clients</span></div></div>
+    <div><div class="hs-n">6</div><div class="hs-l"><span class="es">Servicios</span><span class="en">Services</span></div></div>
+    <div><div class="hs-n">100%</div><div class="hs-l"><span class="es">Personal</span><span class="en">Custom</span></div></div>
+  </div>
+  <div class="hero-scroll"><span class="es">Desliza</span><span class="en">Scroll</span></div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <div class="mq-item"><div class="mq-dot"></div><span>VISUAL</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>STAYS</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span><span class="es">EXPERIENCIAS</span><span class="en">EXPERIENCES</span></span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>SAYULITA</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>PUERTO VALLARTA</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>ENGAGEMENT</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span><span class="es">FOTOGRAFÍA COMERCIAL</span><span class="en">COMMERCIAL PHOTOGRAPHY</span></span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>LIFESTYLE</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>VISUAL</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>STAYS</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span><span class="es">EXPERIENCIAS</span><span class="en">EXPERIENCES</span></span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>SAYULITA</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>PUERTO VALLARTA</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>ENGAGEMENT</span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span><span class="es">FOTOGRAFÍA COMERCIAL</span><span class="en">COMMERCIAL PHOTOGRAPHY</span></span></div>
+    <div class="mq-item"><div class="mq-dot"></div><span>LIFESTYLE</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-l">
+    <div>
+      <p class="eyebrow"><span class="es">Nuestra esencia</span><span class="en">Our essence</span></p>
+      <p class="about-q"><span class="es">"No vendemos <em>horas.</em><br>Vendemos recuerdos."</span><span class="en">"We don't sell <em>hours.</em><br>We sell memories."</span></p>
+      <p style="font-size:14px;line-height:1.74;color:rgba(250,247,240,.46);max-width:370px;margin-top:24px;"><span class="es">Cada sesión es planeada con intención. El ambiente, la luz, la narrativa. Resultados organizados y listos para usarse.</span><span class="en">Every session is planned with intention. The atmosphere, the light, the narrative. Organized results, ready to use.</span></p>
+    </div>
+    <div class="about-nums">
+      <div><div class="an-n">200+</div><div class="an-l"><span class="es">Clientes</span><span class="en">Clients</span></div></div>
+      <div><div class="an-n">4+</div><div class="an-l"><span class="es">Años</span><span class="en">Years</span></div></div>
+      <div><div class="an-n">∞</div><div class="an-l"><span class="es">Momentos</span><span class="en">Moments</span></div></div>
+    </div>
+  </div>
+  <div class="about-r">
+    <p class="eyebrow"><span class="es">Quiénes somos</span><span class="en">Who we are</span></p>
+    <h2 class="h2"><span class="es">Estudio creativo<br>en <em>Sayulita</em></span><span class="en">Creative studio<br>in <em>Sayulita</em></span></h2>
+    <p class="about-body"><span class="es">Trabajamos con negocios, hoteles, marcas y personas que quieren imágenes que comuniquen algo real. Combinamos dirección creativa, planificación y técnica para producir contenido con impacto.</span><span class="en">We work with businesses, hotels, brands and people who want images that communicate something real. We combine creative direction, planning and technique to produce content with impact.</span></p>
+    <div class="pillars">
+      <div class="pillar"><div class="pillar-dot"></div><p><strong><span class="es">Planeación previa.</span><span class="en">Pre-planning.</span></strong> <span class="es">Cada sesión comienza antes de que lleguemos.</span><span class="en">Every session starts before we arrive.</span></p></div>
+      <div class="pillar"><div class="pillar-dot"></div><p><strong><span class="es">Entrega organizada.</span><span class="en">Organized delivery.</span></strong> <span class="es">Carpetas por categoría, lista para usar.</span><span class="en">Category folders, ready to use.</span></p></div>
+      <div class="pillar"><div class="pillar-dot"></div><p><strong><span class="es">Resultados, no horas.</span><span class="en">Results, not hours.</span></strong> <span class="es">Sabes exactamente qué recibes.</span><span class="en">You know exactly what you're getting.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="svc-top">
+    <div>
+      <p class="eyebrow"><span class="es">Lo que hacemos</span><span class="en">What we do</span></p>
+      <h2 class="h2"><span class="es">Servicios<br><em>fotográficos</em></span><span class="en">Photography<br><em>services</em></span></h2>
+    </div>
+    <p class="body"><span class="es">Desde sesiones esenciales hasta proyectos de alto impacto para hoteles y marcas.</span><span class="en">From essential sessions to high-impact projects for hotels and brands.</span></p>
+  </div>
+  <div class="svc-list">
+    <a class="svc rv" href="#precios"><div class="svc-num">01</div><div class="svc-body"><span class="svc-name"><span class="es">Sesiones Lifestyle</span><span class="en">Lifestyle Sessions</span></span><span class="svc-sub"><span class="es">Personal · Editorial · Premium</span><span class="en">Personal · Editorial · Premium</span></span></div><div class="svc-r"><span class="svc-price">$2,500 MXN</span><span class="svc-tag"><span class="es">Desde</span><span class="en">From</span></span><span class="svc-arrow">→</span></div></a>
+    <a class="svc rv" href="#precios"><div class="svc-num">02</div><div class="svc-body"><span class="svc-name"><span class="es">Fotografía Comercial</span><span class="en">Commercial Photography</span></span><span class="svc-sub"><span class="es">Negocios · Marcas · Hoteles</span><span class="en">Businesses · Brands · Hotels</span></span></div><div class="svc-r"><span class="svc-price">$3,500 MXN</span><span class="svc-tag"><span class="es">Desde</span><span class="en">From</span></span><span class="svc-arrow">→</span></div></a>
+    <a class="svc rv" href="#precios"><div class="svc-num">03</div><div class="svc-body"><span class="svc-name"><span class="es">Engagement & Pedidas</span><span class="en">Engagement & Proposals</span></span><span class="svc-sub"><span class="es">Fotos · Reel · Drone · Video</span><span class="en">Photos · Reel · Drone · Video</span></span></div><div class="svc-r"><span class="svc-price">$1,000 MXN</span><span class="svc-tag"><span class="es">Desde</span><span class="en">From</span></span><span class="svc-arrow">→</span></div></a>
+    <a class="svc rv" href="#precios"><div class="svc-num">04</div><div class="svc-body"><span class="svc-name"><span class="es">Contrato Mensual</span><span class="en">Monthly Contract</span></span><span class="svc-sub"><span class="es">Contenido constante · 30 fotos/mes</span><span class="en">Consistent content · 30 photos/mo</span></span></div><div class="svc-r"><span class="svc-price">$6,000 MXN</span><span class="svc-tag"><span class="es">/mes</span><span class="en">/mo</span></span><span class="svc-arrow">→</span></div></a>
+    <a class="svc rv" href="#precios"><div class="svc-num">05</div><div class="svc-body"><span class="svc-name"><span class="es">Hoteles & Espacios</span><span class="en">Hotels & Spaces</span></span><span class="svc-sub"><span class="es">Arquitectónica · Hospitalidad · OTAs</span><span class="en">Architectural · Hospitality · OTAs</span></span></div><div class="svc-r"><span class="svc-price">$12,000 MXN</span><span class="svc-tag"><span class="es">Desde</span><span class="en">From</span></span><span class="svc-arrow">→</span></div></a>
+    <a class="svc rv" href="#contacto"><div class="svc-num">06</div><div class="svc-body"><span class="svc-name"><span class="es">Marketing Digital</span><span class="en">Digital Marketing</span></span><span class="svc-sub"><span class="es">Diagnóstico · Gestión · Branding</span><span class="en">Diagnosis · Management · Branding</span></span></div><div class="svc-r"><span class="svc-price"><span class="es">A consultar</span><span class="en">Quote</span></span><span class="svc-tag"><span class="es">Personalizado</span><span class="en">Custom</span></span><span class="svc-arrow">→</span></div></a>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="exp" id="experiencias">
+  <div class="exp-header">
+    <div>
+      <p class="eyebrow" style="color:rgba(143,181,154,.45);"><span class="es">Más que fotos</span><span class="en">More than photos</span></p>
+      <h2 class="h2 h2-lt"><span class="es">Experiencias<br><em>curadas</em><br>en Sayulita</span><span class="en">Curated<br><em>experiences</em><br>in Sayulita</span></h2>
+    </div>
+    <p class="body body-lt"><span class="es">Una experiencia guiada donde las fotos son el recuerdo, no el centro. Nosotros planificamos todo: lugar, proveedores, ambiente.</span><span class="en">A guided experience where photos are the memory, not the focus. We plan everything: location, vendors, atmosphere.</span></p>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card rv"><div class="exp-num">01</div><p class="exp-label"><span class="es">Base · 2–3h</span><span class="en">Base · 2–3h</span></p><h3 class="exp-name"><span class="es">Picnic en <em>la Playa</em></span><span class="en">Beach <em>Picnic</em></span></h3><p class="exp-desc"><span class="es">Montaje curado, luz dorada y acompañamiento fotográfico. 25–30 fotos editadas incluidas.</span><span class="en">Curated setup, golden light and photographic accompaniment. 25–30 edited photos included.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">— $10,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-num">02</div><p class="exp-label"><span class="es">Premium · 4–5h</span><span class="en">Premium · 4–5h</span></p><h3 class="exp-name"><span class="es">Cena <em>Privada</em></span><span class="en">Private <em>Dinner</em></span></h3><p class="exp-desc"><span class="es">Mesa privada con decoración especial, coordinación de proveedores y cobertura completa. Video opcional.</span><span class="en">Private table with special decoration, vendor coordination and full coverage. Optional video.</span></p><div class="exp-price-row"><span class="exp-price">$15,000</span><span class="exp-price-l">— $20,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-num">03</div><p class="exp-label"><span class="es">Experiencia</span><span class="en">Experience</span></p><h3 class="exp-name"><span class="es">Cabalgata <em>al Atardecer</em></span><span class="en">Sunset <em>Horseback</em></span></h3><p class="exp-desc"><span class="es">Costa y naturaleza. Coordinamos proveedor, ruta y el acompañamiento fotográfico completo.</span><span class="en">Coast and nature. We coordinate the provider, route and full photographic accompaniment.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-num">04</div><p class="exp-label"><span class="es">Gastronomía</span><span class="en">Gastronomy</span></p><h3 class="exp-name"><span class="es">Ruta <em>Gastronómica</em></span><span class="en">Gastronomic <em>Route</em></span></h3><p class="exp-desc"><span class="es">Los mejores sabores de Sayulita y PV con cámara en mano. Alianzas locales y guía incluida.</span><span class="en">The best flavors of Sayulita and PV with camera in hand. Local partnerships and guide included.</span></p><div class="exp-price-row"><span class="exp-price">$10,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+  </div>
+</section>
+
+<!-- STAYS -->
+<section class="stays" id="stays">
+  <div class="stays-inner">
+    <div>
+      <p class="eyebrow"><span class="es">Para propiedades</span><span class="en">For properties</span></p>
+      <h2 class="h2"><span class="es">Maximiza tu<br><em>ocupación</em> en OTAs</span><span class="en">Maximize your<br><em>occupancy</em> on OTAs</span></h2>
+      <p class="body"><span class="es">Gestión mensual, setup de Cloudbeds y auditoría para propiedades en Sayulita y Puerto Vallarta.</span><span class="en">Monthly management, Cloudbeds setup and audit for properties in Sayulita and Puerto Vallarta.</span></p>
+      <div class="stays-cards">
+        <div class="stay-card rv"><div><div class="stay-name"><span class="es">Auditoría OTA</span><span class="en">OTA Audit</span></div><div class="stay-desc"><span class="es">Análisis completo de tu presencia. Identificamos qué frena tus reservas.</span><span class="en">Complete presence analysis. We identify what's holding back your bookings.</span></div></div><span class="stay-badge"><span class="es">Análisis</span><span class="en">Analysis</span></span></div>
+        <div class="stay-card rv"><div><div class="stay-name"><span class="es">Setup Cloudbeds</span><span class="en">Cloudbeds Setup</span></div><div class="stay-desc"><span class="es">Configuración y optimización de tu PMS. Integración con Airbnb, Booking y más.</span><span class="en">PMS configuration and optimization. Integration with Airbnb, Booking and more.</span></div></div><span class="stay-badge">Setup</span></div>
+        <div class="stay-card rv"><div><div class="stay-name"><span class="es">Operaciones Mensuales</span><span class="en">Monthly Operations</span></div><div class="stay-desc"><span class="es">Gestión continua de listados y precios. Tu propiedad siempre optimizada.</span><span class="en">Continuous management of listings and pricing. Your property always optimized.</span></div></div><span class="stay-badge"><span class="es">Mensual</span><span class="en">Monthly</span></span></div>
+      </div>
+    </div>
+    <div class="stays-vis">
+      <div class="stays-img">
+        <div class="stays-tag"><div class="st-l"><span class="es">Ubicación</span><span class="en">Location</span></div><div class="st-v">Sayulita</div></div>
+        <span class="stays-loc">Sayulita · Puerto Vallarta · Nayarit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="precios">
+  <div class="pricing-top">
+    <div>
+      <p class="eyebrow"><span class="es">Inversión</span><span class="en">Investment</span></p>
+      <h2 class="h2"><span class="es">Paquetes<br><em>comerciales</em></span><span class="en">Commercial<br><em>packages</em></span></h2>
+    </div>
+    <p class="body"><span class="es">Precios claros, sin cobros por hora, sin sorpresas. Sabes exactamente qué recibes antes de agendar.</span><span class="en">Clear pricing, no hourly charges, no surprises. You know exactly what you're getting before booking.</span></p>
+  </div>
+  <div class="p-grid">
+    <div class="p-card rv"><p class="p-tier"><span class="es">Esencial</span><span class="en">Essential</span></p><h3 class="p-name"><span class="es">Sesión Comercial</span><span class="en">Commercial Session</span></h3><div class="p-div"></div><div class="p-amount">$3,500</div><p class="p-unit">MXN · 15 <span class="es">fotos</span><span class="en">photos</span></p><ul class="p-feats"><li><span class="es">Sesión 2 horas</span><span class="en">2-hour session</span></li><li><span class="es">1 locación</span><span class="en">1 location</span></li><li><span class="es">Edición básica profesional</span><span class="en">Basic professional editing</span></li><li><span class="es">Entrega 5 días</span><span class="en">5-day delivery</span></li><li><span class="es">Carpetas organizadas</span><span class="en">Organized folders</span></li></ul><a href="https://ogphothos.pixieset.com/booking/" class="p-btn" target="_blank"><span class="es">Agendar</span><span class="en">Book now</span></a></div>
+    <div class="p-card hot rv"><div class="p-badge"><span class="es">Más popular</span><span class="en">Most popular</span></div><p class="p-tier"><span class="es">Completo</span><span class="en">Complete</span></p><h3 class="p-name"><span class="es">Proyecto Completo</span><span class="en">Full Project</span></h3><div class="p-div"></div><div class="p-amount">$12,000</div><p class="p-unit">MXN · 60–80 <span class="es">fotos</span><span class="en">photos</span></p><ul class="p-feats"><li><span class="es">Planeación previa</span><span class="en">Pre-planning included</span></li><li><span class="es">1–2 locaciones</span><span class="en">1–2 locations</span></li><li><span class="es">Producto, lifestyle, espacios</span><span class="en">Product, lifestyle, spaces</span></li><li><span class="es">Edición avanzada</span><span class="en">Advanced editing</span></li><li><span class="es">14 horas de trabajo</span><span class="en">14 total working hours</span></li><li><span class="es">Carpetas por categoría</span><span class="en">Category folders</span></li></ul><a href="https://ogphothos.pixieset.com/booking/" class="p-btn" target="_blank"><span class="es">Agendar</span><span class="en">Book now</span></a></div>
+    <div class="p-card rv"><p class="p-tier"><span class="es">Recurrente</span><span class="en">Recurring</span></p><h3 class="p-name"><span class="es">Contrato Mensual</span><span class="en">Monthly Contract</span></h3><div class="p-div"></div><div class="p-amount">$6,000</div><p class="p-unit">MXN / <span class="es">mes · 30 fotos</span><span class="en">mo · 30 photos</span></p><ul class="p-feats"><li><span class="es">1 sesión mensual</span><span class="en">1 monthly session</span></li><li><span class="es">30 fotos por entrega</span><span class="en">30 delivered photos</span></li><li><span class="es">Contenido para redes</span><span class="en">Content for social media</span></li><li><span class="es">Descuento trimestral</span><span class="en">Quarterly discount</span></li><li><span class="es">Contrato flexible</span><span class="en">Flexible contract</span></li></ul><a href="#contacto" class="p-btn"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-h">
+    <p class="eyebrow" style="color:rgba(143,181,154,.44);"><span class="es">Lo que dicen</span><span class="en">What they say</span></p>
+    <h2 class="h2 h2-lt"><span class="es">Clientes que<br><em>confiaron</em></span><span class="en">Clients who<br><em>trusted us</em></span></h2>
+  </div>
+  <div class="t-grid">
+    <div class="t-card rv"><div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div><p class="t-text"><span class="es">"Las fotos de nuestro restaurante cambiaron completamente la percepción del negocio. Más reservas desde que actualizamos los perfiles."</span><span class="en">"The photos of our restaurant completely changed how the business is perceived. More bookings since we updated the profiles."</span></p><div class="t-auth"><div class="t-av"></div><div><div class="t-name">Carlos M.</div><div class="t-role"><span class="es">Restaurante · Sayulita</span><span class="en">Restaurant · Sayulita</span></div></div></div></div>
+    <div class="t-card rv"><div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div><p class="t-text"><span class="es">"La pedida de mano quedó perfecta. Ni notamos la cámara y las fotos capturaron exactamente el momento."</span><span class="en">"The proposal turned out perfect. We didn't even notice the camera and the photos captured the moment exactly."</span></p><div class="t-auth"><div class="t-av"></div><div><div class="t-name">Sofía & Diego</div><div class="t-role"><span class="es">Pareja · Puerto Vallarta</span><span class="en">Couple · Puerto Vallarta</span></div></div></div></div>
+    <div class="t-card rv"><div class="t-stars"><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div><div class="t-star"></div></div><p class="t-text"><span class="es">"El setup de Cloudbeds y la auditoría OTA nos aumentó la ocupación 30% en el primer trimestre."</span><span class="en">"The Cloudbeds setup and OTA audit increased our occupancy by 30% in the first quarter."</span></p><div class="t-auth"><div class="t-av"></div><div><div class="t-name">Ana L.</div><div class="t-role"><span class="es">Hotel boutique · Sayulita</span><span class="en">Boutique hotel · Sayulita</span></div></div></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contacto">
+  <p class="eyebrow"><span class="es">¿Listo para empezar?</span><span class="en">Ready to start?</span></p>
+  <h2 class="h2"><span class="es">Cuéntanos qué<br>necesitas <em>hoy</em></span><span class="en">Tell us what<br>you need <em>today</em></span></h2>
+  <p class="body"><span class="es">Ya sea una sesión, un proyecto completo o una experiencia curada, estamos listos para planear algo memorable contigo.</span><span class="en">Whether it's a session, a full project or a curated experience, we're ready to plan something memorable with you.</span></p>
+  <div class="cta-btns">
+    <a href="https://ogphothos.pixieset.com/booking/" class="btn-cm" target="_blank"><span class="es">Agendar en Pixieset</span><span class="en">Book on Pixieset</span></a>
+    <a href="https://wa.me/521XXXXXXXXXX" class="btn-cg" target="_blank"><span class="es">WhatsApp</span><span class="en">WhatsApp</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div><div class="ft-brand">OGPHOTOS</div><p class="ft-tag"><span class="es">Fotografía, experiencias y hospitalidad en la costa del Pacífico mexicano.</span><span class="en">Photography, experiences and hospitality on Mexico's Pacific coast.</span></p></div>
+    <div class="ft-col"><h6><span class="es">Visual</span><span class="en">Visual</span></h6><ul><li><a href="#servicios"><span class="es">Fotografía Comercial</span><span class="en">Commercial Photography</span></a></li><li><a href="#servicios">Lifestyle</a></li><li><a href="#servicios">Engagement</a></li><li><a href="#servicios"><span class="es">Contrato Mensual</span><span class="en">Monthly Contract</span></a></li></ul></div>
+    <div class="ft-col"><h6><span class="es">Más</span><span class="en">More</span></h6><ul><li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li><li><a href="#stays">Stays · OTAs</a></li><li><a href="#servicios"><span class="es">Marketing Digital</span><span class="en">Digital Marketing</span></a></li><li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li></ul></div>
+    <div class="ft-col"><h6><span class="es">Contacto</span><span class="en">Contact</span></h6><ul><li><a href="https://ogphothos.pixieset.com/booking/" target="_blank"><span class="es">Reservar sesión</span><span class="en">Book a session</span></a></li><li><a href="https://wa.me/521XXXXXXXXXX">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="#"><span class="es">Sayulita, México</span><span class="en">Sayulita, Mexico</span></a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2026 OGPHOTOS. <span class="es">Todos los derechos reservados.</span><span class="en">All rights reserved.</span></p>
+    <div class="ft-soc"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="https://ogphothos.pixieset.com/booking/" target="_blank">Pixieset</a></div>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>55));
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{const l=b.dataset.l;document.body.dataset.lang=l;document.querySelectorAll('.lang-btn').forEach(x=>x.classList.toggle('active',x.dataset.l===l));}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
