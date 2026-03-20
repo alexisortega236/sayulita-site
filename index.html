@@ -261,6 +261,439 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   body{cursor:auto;}
   .cursor,.cursor-ring{display:none;}
 }
+
+/* ═══════════════════════════════════════
+   CHAT BOT — HERO INLINE + STICKY WIDGET
+   ═══════════════════════════════════════ */
+
+/* ── Hero chat bubble ── */
+.hero-chat {
+  position: absolute;
+  bottom: 88px;
+  right: 64px;
+  width: 360px;
+  z-index: 10;
+  opacity: 0;
+  animation: up 1s 1.2s forwards;
+}
+
+.hc-card {
+  background: rgba(22, 51, 38, 0.82);
+  border: 1px solid rgba(143,181,154,.18);
+  backdrop-filter: blur(18px);
+  border-radius: 14px;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transition: transform .3s ease, opacity .3s ease;
+}
+
+.hc-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(143,181,154,.1);
+}
+
+.hc-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--leaf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hc-avatar svg { width: 16px; height: 16px; }
+
+.hc-name { font-size: 12px; font-weight: 600; color: var(--bone); line-height: 1.2; }
+.hc-status { font-size: 10px; color: rgba(143,181,154,.6); letter-spacing: .04em; }
+
+.hc-status-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--leaf);
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.hc-msgs {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 110px;
+}
+
+.hc-msg {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.hc-msg.show { opacity: 1; transform: translateY(0); }
+
+.hc-msg-av {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--jungle2);
+  border: 1px solid rgba(143,181,154,.2);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: var(--sage);
+}
+
+.hc-bubble {
+  background: rgba(61,107,80,.55);
+  border: 1px solid rgba(143,181,154,.12);
+  border-radius: 12px 12px 12px 3px;
+  padding: 9px 13px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(250,247,240,.85);
+  max-width: 260px;
+}
+
+.hc-bubble.user {
+  background: var(--leaf);
+  border-color: transparent;
+  border-radius: 12px 12px 3px 12px;
+  color: var(--bone);
+  margin-left: auto;
+}
+
+.hc-msg.user { flex-direction: row-reverse; }
+
+.hc-typing {
+  display: flex; align-items: center; gap: 4px;
+  padding: 9px 13px;
+  background: rgba(61,107,80,.35);
+  border: 1px solid rgba(143,181,154,.1);
+  border-radius: 12px 12px 12px 3px;
+  width: fit-content;
+}
+
+.hc-dot {
+  width: 5px; height: 5px;
+  background: rgba(143,181,154,.5);
+  border-radius: 50%;
+  animation: typingBounce .9s ease-in-out infinite;
+}
+.hc-dot:nth-child(2) { animation-delay: .15s; }
+.hc-dot:nth-child(3) { animation-delay: .3s; }
+
+@keyframes typingBounce {
+  0%,60%,100% { transform: translateY(0); opacity: .5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.hc-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid rgba(143,181,154,.1);
+  background: rgba(22,51,38,.4);
+}
+
+.hc-input {
+  flex: 1;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(143,181,154,.14);
+  border-radius: 20px;
+  padding: 9px 14px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  color: var(--bone);
+  outline: none;
+  transition: border-color .2s;
+}
+
+.hc-input::placeholder { color: rgba(143,181,154,.35); }
+.hc-input:focus { border-color: rgba(143,181,154,.4); }
+
+.hc-send {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--leaf);
+  border: none;
+  cursor: none;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s, transform .15s;
+}
+.hc-send:hover { background: var(--moss); transform: scale(1.08); }
+.hc-send svg { width: 13px; height: 13px; }
+
+.hc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 18px 14px;
+}
+
+.hc-chip {
+  font-size: 10.5px;
+  letter-spacing: .03em;
+  color: rgba(143,181,154,.75);
+  background: rgba(92,140,101,.12);
+  border: 1px solid rgba(143,181,154,.16);
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: none;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.hc-chip:hover {
+  background: rgba(92,140,101,.25);
+  color: var(--sage);
+  border-color: rgba(143,181,154,.32);
+}
+
+/* ── Sticky bot widget (post-hero) ── */
+.bot-sticky {
+  position: fixed;
+  bottom: 28px;
+  right: 32px;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.bot-sticky.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.bot-sticky.open .bot-panel { display: flex; }
+.bot-sticky.open .bot-fab-icon-open { display: none; }
+.bot-sticky.open .bot-fab-icon-close { display: block; }
+
+.bot-panel {
+  display: none;
+  flex-direction: column;
+  width: 340px;
+  max-height: 480px;
+  background: rgba(20, 33, 25, 0.96);
+  border: 1px solid rgba(143,181,154,.2);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(0,0,0,.45);
+  backdrop-filter: blur(20px);
+}
+
+.bp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  background: rgba(27,58,45,.7);
+  border-bottom: 1px solid rgba(143,181,154,.1);
+  flex-shrink: 0;
+}
+
+.bp-info { display: flex; align-items: center; gap: 10px; }
+
+.bp-av {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--leaf);
+  display: flex; align-items: center; justify-content: center;
+}
+.bp-av svg { width: 17px; height: 17px; }
+
+.bp-name { font-size: 13px; font-weight: 600; color: var(--bone); }
+.bp-sub { font-size: 10px; color: rgba(143,181,154,.55); margin-top: 1px; }
+
+.bp-close {
+  background: none; border: none;
+  color: rgba(143,181,154,.4);
+  cursor: none;
+  font-size: 18px;
+  line-height: 1;
+  transition: color .2s;
+  padding: 4px;
+}
+.bp-close:hover { color: var(--sage); }
+
+.bp-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.bp-msgs::-webkit-scrollbar { width: 3px; }
+.bp-msgs::-webkit-scrollbar-track { background: transparent; }
+.bp-msgs::-webkit-scrollbar-thumb { background: rgba(143,181,154,.2); border-radius: 2px; }
+
+.bp-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  animation: msgIn .3s ease;
+}
+
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bp-msg.user { flex-direction: row-reverse; }
+
+.bp-av-sm {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--jungle2);
+  border: 1px solid rgba(143,181,154,.18);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; color: var(--sage);
+  align-self: flex-end;
+}
+
+.bp-bubble {
+  background: rgba(45,80,60,.6);
+  border: 1px solid rgba(143,181,154,.1);
+  border-radius: 12px 12px 12px 3px;
+  padding: 9px 13px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(250,247,240,.88);
+  max-width: 230px;
+}
+
+.bp-bubble.user {
+  background: var(--leaf);
+  border-color: transparent;
+  border-radius: 12px 12px 3px 12px;
+  color: var(--bone);
+}
+
+.bp-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 16px 10px;
+}
+
+.bp-chip {
+  font-size: 11px;
+  color: rgba(143,181,154,.7);
+  background: rgba(92,140,101,.1);
+  border: 1px solid rgba(143,181,154,.15);
+  border-radius: 16px;
+  padding: 5px 11px;
+  cursor: none;
+  transition: all .2s;
+}
+.bp-chip:hover {
+  background: rgba(92,140,101,.22);
+  color: var(--sage);
+}
+
+.bp-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid rgba(143,181,154,.1);
+  background: rgba(18,30,22,.5);
+  flex-shrink: 0;
+}
+
+.bp-input {
+  flex: 1;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(143,181,154,.14);
+  border-radius: 18px;
+  padding: 8px 13px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  color: var(--bone);
+  outline: none;
+  transition: border-color .2s;
+}
+.bp-input::placeholder { color: rgba(143,181,154,.3); }
+.bp-input:focus { border-color: rgba(143,181,154,.38); }
+
+.bp-send {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--leaf);
+  border: none;
+  cursor: none;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+.bp-send:hover { background: var(--moss); }
+.bp-send svg { width: 13px; height: 13px; }
+
+/* FAB button */
+.bot-fab {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--jungle);
+  border: 1px solid rgba(143,181,154,.28);
+  cursor: none;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 28px rgba(0,0,0,.35);
+  position: relative;
+}
+
+.bot-fab:hover {
+  background: var(--jungle2);
+  transform: scale(1.08);
+  box-shadow: 0 12px 36px rgba(0,0,0,.45);
+}
+
+.bot-fab svg { width: 22px; height: 22px; }
+.bot-fab-icon-close { display: none; }
+
+.bot-fab-badge {
+  position: absolute;
+  top: -2px; right: -2px;
+  width: 12px; height: 12px;
+  background: var(--clay);
+  border-radius: 50%;
+  border: 2px solid var(--raw);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* Transition: hero chat fades as sticky appears */
+.hero-chat.fade-out {
+  opacity: 0 !important;
+  pointer-events: none;
+  transition: opacity .4s ease;
+}
+
+@media(max-width: 1024px) {
+  .hero-chat { width: 310px; right: 40px; }
+}
+
+@media(max-width: 768px) {
+  .hero-chat { display: none; }
+  .bot-sticky { bottom: 20px; right: 20px; }
+  .bot-panel { width: 300px; }
+}
+
 </style>
 </head>
 <body data-lang="es">
@@ -331,6 +764,105 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
     <div><div class="hs-n">100%</div><div class="hs-l"><span class="es">Personal</span><span class="en">Custom</span></div></div>
   </div>
   <div class="hero-scroll"><span class="es">Desliza</span><span class="en">Scroll</span></div>
+<!-- ═══════════════════════ HERO CHAT ═══════════════════════ -->
+<div class="hero-chat" id="heroChat">
+  <div class="hc-card">
+    <div class="hc-header">
+      <div class="hc-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FAF7F0" stroke-width="1.8" stroke-linecap="round">
+          <circle cx="12" cy="8" r="3.5"/>
+          <path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7"/>
+        </svg>
+      </div>
+      <div>
+        <div class="hc-name">Oli · OGPHOTOS</div>
+        <div class="hc-status"><span class="hc-status-dot"></span><span class="es">En línea ahora</span><span class="en">Online now</span></div>
+      </div>
+    </div>
+
+    <div class="hc-msgs" id="heroMsgs">
+      <div class="hc-msg" id="hm1">
+        <div class="hc-msg-av">O</div>
+        <div class="hc-bubble"><span class="es">¡Hola! Soy Oli 👋 ¿En qué te puedo ayudar hoy?</span><span class="en">Hi! I'm Oli 👋 How can I help you today?</span></div>
+      </div>
+    </div>
+
+    <div class="hc-chips" id="heroChips">
+      <button class="hc-chip es" onclick="heroChipClick(this,'Quiero ver servicios de fotografía')">📷 <span class="es">Ver servicios</span></button>
+      <button class="hc-chip" onclick="heroChipClick(this,'¿Cuánto cuesta una sesión?')">💰 <span class="es">Precios</span><span class="en">Pricing</span></button>
+      <button class="hc-chip" onclick="heroChipClick(this,'Quiero agendar una sesión')">📅 <span class="es">Agendar</span><span class="en">Book</span></button>
+      <button class="hc-chip" onclick="heroChipClick(this,'Cuéntame sobre las experiencias')">✨ <span class="es">Experiencias</span><span class="en">Experiences</span></button>
+    </div>
+
+    <div class="hc-input-row">
+      <input class="hc-input" id="heroInput" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter') heroSend()"/>
+      <button class="hc-send" onclick="heroSend()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FAF7F0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ STICKY BOT ═══════════════════════ -->
+<div class="bot-sticky" id="botSticky">
+  <div class="bot-panel" id="botPanel">
+    <div class="bp-header">
+      <div class="bp-info">
+        <div class="bp-av">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FAF7F0" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="12" cy="8" r="3.5"/>
+            <path d="M5 20c0-3.866 3.134-7 7-7s7 3.134 7 7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="bp-name">Oli · OGPHOTOS</div>
+          <div class="bp-sub"><span class="hc-status-dot"></span><span class="es">En línea · respuesta inmediata</span><span class="en">Online · instant reply</span></div>
+        </div>
+      </div>
+      <button class="bp-close" onclick="toggleBot()">✕</button>
+    </div>
+
+    <div class="bp-msgs" id="botMsgs">
+      <div class="bp-msg">
+        <div class="bp-av-sm">O</div>
+        <div class="bp-bubble"><span class="es">¡Hola de nuevo! ¿En qué te puedo ayudar? 🌿</span><span class="en">Hey again! How can I help? 🌿</span></div>
+      </div>
+    </div>
+
+    <div class="bp-chips-row" id="botChips">
+      <button class="bp-chip" onclick="botChip('Servicios de fotografía')"><span class="es">Fotografía</span><span class="en">Photography</span></button>
+      <button class="bp-chip" onclick="botChip('¿Cuánto cuesta?')"><span class="es">Precios</span><span class="en">Pricing</span></button>
+      <button class="bp-chip" onclick="botChip('Quiero agendar')"><span class="es">Agendar</span><span class="en">Book</span></button>
+      <button class="bp-chip" onclick="botChip('Experiencias curadas')"><span class="es">Experiencias</span><span class="en">Experiences</span></button>
+      <button class="bp-chip" onclick="botChip('Stays y hospitalidad')">Stays</button>
+    </div>
+
+    <div class="bp-input-row">
+      <input class="bp-input" id="botInput" placeholder="Escribe aquí..." onkeydown="if(event.key==='Enter') botSend()"/>
+      <button class="bp-send" onclick="botSend()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FAF7F0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <button class="bot-fab" id="botFab" onclick="toggleBot()">
+    <span class="bot-fab-icon-open">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#8FB59A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </span>
+    <span class="bot-fab-icon-close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#8FB59A" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </span>
+    <div class="bot-fab-badge"></div>
+  </button>
+</div>
 </section>
 
 <!-- MARQUEE -->
@@ -494,6 +1026,194 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 </footer>
 
 <script>
+
+// ═══════════════════════════════════════
+//  BOT LOGIC — HERO + STICKY
+// ═══════════════════════════════════════
+
+// Mock responses (replace with real API call to Flask backend)
+const responses = {
+  es: {
+    default: ['¡Claro! Te puedo ayudar con eso. ¿Qué tipo de sesión tienes en mente?', 'Con gusto te oriento. ¿Es para un negocio o algo personal?', '¡Perfecto! Cuéntame un poco más para darte la mejor opción.'],
+    precio: ['Las sesiones personales comienzan en $2,500 MXN (30 min / 10 fotos). Los paquetes comerciales desde $3,500 MXN. ¿Para qué necesitas las fotos?', 'El paquete más popular para negocios es el Proyecto Completo a $12,000 MXN con 60–80 fotos. ¿Te cuento qué incluye?'],
+    agendar: ['¡Genial! Para agendar necesito saber: ¿qué tipo de sesión quieres y en qué fechas tienes disponibilidad?', 'Podemos agendar directo por aquí 📅 ¿Cuál es tu nombre y qué servicio te interesa?'],
+    servicios: ['OGPHOTOS ofrece: Sesiones lifestyle, Fotografía comercial, Engagement, Contratos mensuales, Experiencias curadas y gestión de Stays. ¿Cuál te llama más la atención?'],
+    experiencias: ['Las experiencias van desde un Picnic en la Playa ($8,000–$10,000 MXN) hasta una Cena Privada ($15,000–$20,000 MXN). Todo coordinado, con fotos incluidas 🌿 ¿Te cuento más de alguna?'],
+    stays: ['Para Stays ofrecemos Auditoría OTA, Setup de Cloudbeds y Operaciones Mensuales para propiedades en Sayulita y Puerto Vallarta. ¿Tienes una propiedad que quieras optimizar?'],
+  },
+  en: {
+    default: ["Sure! I can help with that. What kind of session do you have in mind?", "Happy to guide you. Is this for a business or personal use?"],
+    precio: ['Personal sessions start at $2,500 MXN (30 min / 10 photos). Commercial packages from $3,500 MXN. What do you need the photos for?'],
+    agendar: ["Great! To book, I just need: what type of session and what dates work for you?"],
+    servicios: ['OGPHOTOS offers: Lifestyle sessions, Commercial photography, Engagement, Monthly contracts, Curated experiences and Stays management. Which one catches your eye?'],
+    experiencias: ['Experiences range from a Beach Picnic ($8,000–$10,000 MXN) to a Private Dinner ($15,000–$20,000 MXN). All coordinated, with photos included 🌿'],
+    stays: ['For Stays we offer OTA Audits, Cloudbeds Setup and Monthly Operations for properties in Sayulita and Puerto Vallarta.'],
+  }
+};
+
+function getLang() { return document.body.dataset.lang || 'es'; }
+
+function getReply(text) {
+  const lang = getLang();
+  const t = text.toLowerCase();
+  const r = responses[lang];
+  if (t.includes('precio') || t.includes('costo') || t.includes('cuanto') || t.includes('price') || t.includes('cost') || t.includes('cuánto')) return pick(r.precio);
+  if (t.includes('agenda') || t.includes('reserva') || t.includes('book')) return pick(r.agendar);
+  if (t.includes('servicio') || t.includes('servic')) return pick(r.servicios);
+  if (t.includes('experiencia') || t.includes('picnic') || t.includes('cena') || t.includes('experi')) return pick(r.experiencias);
+  if (t.includes('stay') || t.includes('hotel') || t.includes('hospedaje') || t.includes('property')) return pick(r.stays);
+  return pick(r.default);
+}
+
+function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+
+// ── Hero chat ──
+let heroTyping = false;
+
+function showHeroMsg(text, isUser=false) {
+  const msgs = document.getElementById('heroMsgs');
+  const div = document.createElement('div');
+  div.className = 'hc-msg' + (isUser ? ' user' : '');
+  div.innerHTML = isUser
+    ? `<div class="hc-bubble user">${text}</div>`
+    : `<div class="hc-msg-av">O</div><div class="hc-bubble">${text}</div>`;
+  msgs.appendChild(div);
+  requestAnimationFrame(() => div.classList.add('show'));
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showHeroTyping() {
+  const msgs = document.getElementById('heroMsgs');
+  const div = document.createElement('div');
+  div.className = 'hc-msg';
+  div.id = 'heroTypingIndicator';
+  div.innerHTML = `<div class="hc-msg-av">O</div><div class="hc-typing"><div class="hc-dot"></div><div class="hc-dot"></div><div class="hc-dot"></div></div>`;
+  msgs.appendChild(div);
+  requestAnimationFrame(() => div.classList.add('show'));
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeHeroTyping() {
+  const t = document.getElementById('heroTypingIndicator');
+  if (t) t.remove();
+}
+
+function heroReply(userMsg) {
+  if (heroTyping) return;
+  heroTyping = true;
+  document.getElementById('heroChips').style.opacity = '.4';
+  showHeroTyping();
+  setTimeout(() => {
+    removeHeroTyping();
+    showHeroMsg(getReply(userMsg));
+    document.getElementById('heroChips').style.opacity = '1';
+    heroTyping = false;
+  }, 900 + Math.random()*600);
+}
+
+function heroSend() {
+  const inp = document.getElementById('heroInput');
+  const val = inp.value.trim();
+  if (!val) return;
+  showHeroMsg(val, true);
+  inp.value = '';
+  heroReply(val);
+}
+
+function heroChipClick(el, text) {
+  showHeroMsg(text, true);
+  heroReply(text);
+}
+
+// Stagger hero messages on load
+setTimeout(() => { document.getElementById('hm1') && document.getElementById('hm1').classList.add('show'); }, 1600);
+
+// ── Sticky bot ──
+let botOpen = false;
+
+function toggleBot() {
+  botOpen = !botOpen;
+  const sticky = document.getElementById('botSticky');
+  sticky.classList.toggle('open', botOpen);
+  document.querySelector('.bot-fab-icon-open').style.display = botOpen ? 'none' : 'flex';
+  document.querySelector('.bot-fab-icon-close').style.display = botOpen ? 'flex' : 'none';
+  document.querySelector('.bot-fab-badge').style.display = botOpen ? 'none' : 'block';
+  if (botOpen) {
+    setTimeout(() => document.getElementById('botInput').focus(), 100);
+  }
+}
+
+function botSend() {
+  const inp = document.getElementById('botInput');
+  const val = inp.value.trim();
+  if (!val) return;
+  addBotMsg(val, true);
+  inp.value = '';
+  document.getElementById('botChips').style.display = 'none';
+  showBotTyping();
+  setTimeout(() => {
+    removeBotTyping();
+    addBotMsg(getReply(val));
+  }, 900 + Math.random()*700);
+}
+
+function botChip(text) {
+  addBotMsg(text, true);
+  document.getElementById('botChips').style.display = 'none';
+  showBotTyping();
+  setTimeout(() => {
+    removeBotTyping();
+    addBotMsg(getReply(text));
+  }, 800 + Math.random()*500);
+}
+
+function addBotMsg(text, isUser=false) {
+  const msgs = document.getElementById('botMsgs');
+  const div = document.createElement('div');
+  div.className = 'bp-msg' + (isUser ? ' user' : '');
+  div.innerHTML = isUser
+    ? `<div class="bp-bubble user">${text}</div>`
+    : `<div class="bp-av-sm">O</div><div class="bp-bubble">${text}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showBotTyping() {
+  const msgs = document.getElementById('botMsgs');
+  const div = document.createElement('div');
+  div.className = 'bp-msg'; div.id = 'botTyping';
+  div.innerHTML = `<div class="bp-av-sm">O</div><div class="bp-bubble" style="padding:10px 14px;"><div style="display:flex;gap:4px;"><div class="hc-dot"></div><div class="hc-dot" style="animation-delay:.15s"></div><div class="hc-dot" style="animation-delay:.3s"></div></div></div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeBotTyping() {
+  const t = document.getElementById('botTyping');
+  if (t) t.remove();
+}
+
+// ── Scroll transition: hero chat → sticky ──
+const heroEl = document.getElementById('heroChat');
+const stickyEl = document.getElementById('botSticky');
+const heroSection = document.querySelector('.hero');
+
+function updateBotVisibility() {
+  const heroBottom = heroSection.getBoundingClientRect().bottom;
+  const threshold = window.innerHeight * 0.3;
+  if (heroBottom < threshold) {
+    heroEl.classList.add('fade-out');
+    stickyEl.classList.add('visible');
+  } else {
+    heroEl.classList.remove('fade-out');
+    stickyEl.classList.remove('visible');
+    // Close panel when going back to hero
+    if (botOpen) toggleBot();
+  }
+}
+
+window.addEventListener('scroll', updateBotVisibility, { passive: true });
+
+
 const cur=document.getElementById('cur'),ring=document.getElementById('ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
