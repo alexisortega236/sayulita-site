@@ -39,6 +39,9 @@ nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:1
 
 /* HERO */
 .hero{min-height:100vh;background:var(--jungle3);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 64px 88px;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.42;display:block;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(16,38,26,.97) 0%,rgba(16,38,26,.6) 40%,rgba(16,38,26,.25) 100%);}
 .hero-wash{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 72% 28%,rgba(92,140,101,.22) 0%,transparent 65%),radial-gradient(ellipse 45% 70% at 18% 82%,rgba(193,127,82,.13) 0%,transparent 55%);pointer-events:none;}
 .hero-botanical{position:absolute;inset:0;opacity:.065;pointer-events:none;}
 .hero-content{position:relative;z-index:2;max-width:880px;}
@@ -125,7 +128,13 @@ nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:1
 .exp::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 58% 48% at 78% 20%,rgba(92,140,101,.18) 0%,transparent 65%);pointer-events:none;}
 .exp-header{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:72px;}
 .exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(255,255,255,.03);}
-.exp-card{background:rgba(27,58,45,.58);border:1px solid rgba(143,181,154,.07);padding:50px 42px;position:relative;transition:background .3s;}
+.exp-card{border:1px solid rgba(143,181,154,.07);padding:50px 42px;position:relative;transition:all .3s;overflow:hidden;}
+.exp-card-img{position:absolute;inset:0;z-index:0;}
+.exp-card-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .6s ease;}
+.exp-card:hover .exp-card-img img{transform:scale(1.05);}
+.exp-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,30,20,.97) 0%,rgba(12,30,20,.75) 45%,rgba(12,30,20,.35) 100%);z-index:1;transition:opacity .3s;}
+.exp-card:hover .exp-card-overlay{opacity:.85;}
+.exp-card>*:not(.exp-card-img):not(.exp-card-overlay){position:relative;z-index:2;}
 .exp-card:hover{background:rgba(37,77,60,.78);border-color:rgba(143,181,154,.18);}
 .exp-num{font-family:'Fraunces',serif;font-size:68px;font-weight:200;color:rgba(143,181,154,.07);position:absolute;top:14px;right:24px;line-height:1;pointer-events:none;}
 .exp-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(143,181,154,.38);margin-bottom:18px;display:flex;align-items:center;gap:9px;}
@@ -153,7 +162,12 @@ nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:1
 .stay-desc{font-size:12px;color:#8A9080;line-height:1.5;transition:color .24s;}
 .stay-badge{font-size:9px;letter-spacing:.17em;text-transform:uppercase;background:var(--raw2);color:#8A9080;padding:5px 11px;border-radius:2px;white-space:nowrap;transition:all .24s;align-self:flex-start;}
 .stays-vis{position:sticky;top:112px;}
-.stays-img{width:100%;aspect-ratio:3/4;background:linear-gradient(158deg,var(--jungle2) 0%,var(--jungle3) 100%);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:32px;}
+.stays-img{width:100%;aspect-ratio:3/4;background:var(--jungle3);border-radius:4px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:32px;}
+.stays-img-bg{position:absolute;inset:0;z-index:0;}
+.stays-img-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s ease;}
+.stays-img:hover .stays-img-bg img{transform:scale(1.04);}
+.stays-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,51,38,.88) 0%,rgba(22,51,38,.35) 55%,rgba(22,51,38,.18) 100%);z-index:1;}
+.stays-img>*:not(.stays-img-bg):not(.stays-img-overlay){position:relative;z-index:2;}
 .stays-img::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 30%,rgba(92,140,101,.28) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(193,127,82,.12) 0%,transparent 48%);}
 .stays-loc{position:relative;z-index:1;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(143,181,154,.45);}
 .stays-tag{position:absolute;top:24px;left:24px;background:rgba(22,51,38,.88);border:1px solid rgba(143,181,154,.18);backdrop-filter:blur(8px);padding:12px 18px;border-radius:4px;}
@@ -544,6 +558,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=75&fm=jpg&fit=crop&crop=entropy" alt="" loading="eager"/></div>
   <svg class="hero-botanical" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
     <path d="M700 900 Q640 680 480 580 Q320 480 150 370 Q80 320 0 270" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
     <path d="M700 900 Q760 680 920 560 Q1080 440 1240 330 Q1320 280 1400 230" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
@@ -575,7 +590,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       </p>
       <div class="hero-acts">
         <a href="#servicios" class="btn-j"><span class="es">Explorar servicios</span><span class="en">Explore services</span> →</a>
-        <a href="https://ogphothos.pixieset.com/booking/" class="btn-ghost" target="_blank"><span class="es">Agendar ahora</span><span class="en">Book now</span> </a>
+        <a href="https://ogphothos.pixieset.com/booking/" class="btn-ghost" target="_blank"><span class="es">Agendar ahora</span><span class="en">Book now</span> ↗</a>
       </div>
     </div>
   </div>
@@ -730,10 +745,10 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
     <p class="body body-lt"><span class="es">Una experiencia guiada donde las fotos son el recuerdo, no el centro. Nosotros planificamos todo: lugar, proveedores, ambiente.</span><span class="en">A guided experience where photos are the memory, not the focus. We plan everything: location, vendors, atmosphere.</span></p>
   </div>
   <div class="exp-grid">
-    <div class="exp-card rv"><div class="exp-num">01</div><p class="exp-label"><span class="es">Base · 2–3h</span><span class="en">Base · 2–3h</span></p><h3 class="exp-name"><span class="es">Picnic en <em>la Playa</em></span><span class="en">Beach <em>Picnic</em></span></h3><p class="exp-desc"><span class="es">Montaje curado, luz dorada y acompañamiento fotográfico. 25–30 fotos editadas incluidas.</span><span class="en">Curated setup, golden light and photographic accompaniment. 25–30 edited photos included.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">— $10,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-num">02</div><p class="exp-label"><span class="es">Premium · 4–5h</span><span class="en">Premium · 4–5h</span></p><h3 class="exp-name"><span class="es">Cena <em>Privada</em></span><span class="en">Private <em>Dinner</em></span></h3><p class="exp-desc"><span class="es">Mesa privada con decoración especial, coordinación de proveedores y cobertura completa. Video opcional.</span><span class="en">Private table with special decoration, vendor coordination and full coverage. Optional video.</span></p><div class="exp-price-row"><span class="exp-price">$15,000</span><span class="exp-price-l">— $20,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-num">03</div><p class="exp-label"><span class="es">Experiencia</span><span class="en">Experience</span></p><h3 class="exp-name"><span class="es">Cabalgata <em>al Atardecer</em></span><span class="en">Sunset <em>Horseback</em></span></h3><p class="exp-desc"><span class="es">Costa y naturaleza. Coordinamos proveedor, ruta y el acompañamiento fotográfico completo.</span><span class="en">Coast and nature. We coordinate the provider, route and full photographic accompaniment.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-num">04</div><p class="exp-label"><span class="es">Gastronomía</span><span class="en">Gastronomy</span></p><h3 class="exp-name"><span class="es">Ruta <em>Gastronómica</em></span><span class="en">Gastronomic <em>Route</em></span></h3><p class="exp-desc"><span class="es">Los mejores sabores de Sayulita y PV con cámara en mano. Alianzas locales y guía incluida.</span><span class="en">The best flavors of Sayulita and PV with camera in hand. Local partnerships and guide included.</span></p><div class="exp-price-row"><span class="exp-price">$10,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">01</div><p class="exp-label"><span class="es">Base · 2–3h</span><span class="en">Base · 2–3h</span></p><h3 class="exp-name"><span class="es">Picnic en <em>la Playa</em></span><span class="en">Beach <em>Picnic</em></span></h3><p class="exp-desc"><span class="es">Montaje curado, luz dorada y acompañamiento fotográfico. 25–30 fotos editadas incluidas.</span><span class="en">Curated setup, golden light and photographic accompaniment. 25–30 edited photos included.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">— $10,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">02</div><p class="exp-label"><span class="es">Premium · 4–5h</span><span class="en">Premium · 4–5h</span></p><h3 class="exp-name"><span class="es">Cena <em>Privada</em></span><span class="en">Private <em>Dinner</em></span></h3><p class="exp-desc"><span class="es">Mesa privada con decoración especial, coordinación de proveedores y cobertura completa. Video opcional.</span><span class="en">Private table with special decoration, vendor coordination and full coverage. Optional video.</span></p><div class="exp-price-row"><span class="exp-price">$15,000</span><span class="exp-price-l">— $20,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">03</div><p class="exp-label"><span class="es">Experiencia</span><span class="en">Experience</span></p><h3 class="exp-name"><span class="es">Cabalgata <em>al Atardecer</em></span><span class="en">Sunset <em>Horseback</em></span></h3><p class="exp-desc"><span class="es">Costa y naturaleza. Coordinamos proveedor, ruta y el acompañamiento fotográfico completo.</span><span class="en">Coast and nature. We coordinate the provider, route and full photographic accompaniment.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">04</div><p class="exp-label"><span class="es">Gastronomía</span><span class="en">Gastronomy</span></p><h3 class="exp-name"><span class="es">Ruta <em>Gastronómica</em></span><span class="en">Gastronomic <em>Route</em></span></h3><p class="exp-desc"><span class="es">Los mejores sabores de Sayulita y PV con cámara en mano. Alianzas locales y guía incluida.</span><span class="en">The best flavors of Sayulita and PV with camera in hand. Local partnerships and guide included.</span></p><div class="exp-price-row"><span class="exp-price">$10,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
   </div>
 </section>
 
@@ -751,7 +766,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       </div>
     </div>
     <div class="stays-vis">
-      <div class="stays-img">
+      <div class="stays-img"><div class="stays-img-bg"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="stays-img-overlay"></div>
         <div class="stays-tag"><div class="st-l"><span class="es">Ubicación</span><span class="en">Location</span></div><div class="st-v">Sayulita</div></div>
         <span class="stays-loc">Sayulita · Puerto Vallarta · Nayarit</span>
       </div>
