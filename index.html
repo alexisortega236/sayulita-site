@@ -971,6 +971,61 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 .bot-bar{transform:translateX(-50%) translateY(100%);animation:botSlideUp .7s cubic-bezier(0.16,1,0.3,1) 1.5s forwards;}
 @media(max-width:768px){.bot-bar{transform:translateY(100%);animation-name:botSlideUpMob;}}
 
+/* ═══════════════════════════════════════
+   BOOK STAYS — property listings
+   ═══════════════════════════════════════ */
+.book-stays{background:var(--bone);padding:112px 64px;}
+.book-stays-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:48px;}
+.book-search{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;background:var(--jungle2);border:1px solid rgba(143,181,154,.18);border-radius:3px;overflow:hidden;margin-bottom:60px;}
+.book-field{padding:18px 22px;border-right:1px solid rgba(143,181,154,.1);display:flex;flex-direction:column;gap:5px;}
+.book-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(143,181,154,.48);}
+.book-field select,.book-field input{background:transparent;border:none;color:var(--bone);font-family:'Syne',sans-serif;font-size:14px;outline:none;width:100%;-webkit-appearance:none;}
+.book-field select option{background:var(--jungle2);color:var(--bone);}
+.book-field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.65);opacity:.5;cursor:pointer;}
+.book-field input[type="number"]{-moz-appearance:textfield;}
+.book-field input[type="number"]::-webkit-outer-spin-button,.book-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+.book-btn{background:var(--clay);color:var(--bone);border:none;padding:0 36px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:background .2s;white-space:nowrap;}
+.book-btn:hover{background:var(--clay2);}
+.book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--raw3);}
+.book-card{background:var(--bone);position:relative;overflow:hidden;transition:box-shadow .3s;}
+.book-card:hover{box-shadow:0 12px 48px rgba(22,51,38,.13);z-index:1;}
+.book-card-img{aspect-ratio:4/3;overflow:hidden;position:relative;}
+.book-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.book-card:hover .book-card-img img{transform:scale(1.05);}
+.book-card-badge{position:absolute;top:14px;left:14px;background:rgba(22,51,38,.88);color:var(--sage);font-size:9px;letter-spacing:.17em;text-transform:uppercase;padding:5px 10px;border-radius:2px;backdrop-filter:blur(6px);}
+.book-card-fav{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;cursor:none;}
+.book-card-fav:hover{background:rgba(255,255,255,.3);}
+.book-card-fav svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:1.8;}
+.book-card-body{padding:22px 24px 26px;}
+.book-card-loc{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.book-card-loc::before{content:'';width:12px;height:1px;background:var(--leaf);flex-shrink:0;}
+.book-card-name{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:10px;}
+.book-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+.book-card-tag{font-size:9px;letter-spacing:.12em;background:var(--raw2);color:#8A9080;padding:4px 9px;border-radius:2px;}
+.book-card-footer{display:flex;align-items:flex-end;justify-content:space-between;}
+.book-card-price-n{font-family:'Fraunces',serif;font-size:24px;font-weight:200;color:var(--ink);line-height:1;}
+.book-card-price-l{font-size:10px;color:#8A9080;margin-top:2px;}
+.book-card-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--ink);}
+.book-card-star{color:var(--gold);}
+.book-card-cta{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--jungle);color:var(--bone);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:12px 20px;border-radius:2px;text-decoration:none;margin-top:16px;transition:background .2s,gap .2s;}
+.book-card-cta:hover{background:var(--jungle2);gap:14px;}
+.book-empty{grid-column:1/-1;text-align:center;padding:72px 0;}
+.book-empty p{font-family:'Fraunces',serif;font-size:22px;font-weight:200;color:#8A9080;font-style:italic;}
+.mob-nav.open .mob-nav-links li:nth-child(6) a{transform:translateY(0);transition-delay:.43s;}
+@media(max-width:1024px){
+  .book-stays{padding-left:40px;padding-right:40px;}
+  .book-search{grid-template-columns:1fr 1fr;}
+  .book-btn{padding:18px 32px;}
+  .book-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:768px){
+  .book-stays{padding:72px 24px;}
+  .book-stays-top{grid-template-columns:1fr;}
+  .book-search{grid-template-columns:1fr;}
+  .book-field{border-right:none;border-bottom:1px solid rgba(143,181,154,.1);}
+  .book-grid{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body data-lang="es">
@@ -989,6 +1044,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       <li><a href="#stays">Stays</a></li>
       <li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
       <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#reservar"><span class="es">Reservar</span><span class="en">Book Stay</span></a></li>
     </ul>
     <div class="lang-toggle">
       <button class="lang-btn active" data-l="es">ES</button>
@@ -1014,6 +1070,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       <li><a href="#stays" onclick="_closeMob()">Stays</a></li>
       <li><a href="#precios" onclick="_closeMob()"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
       <li><a href="#instagram" onclick="_closeMob()">Instagram</a></li>
+      <li><a href="#reservar" onclick="_closeMob()"><span class="es">Reservar</span><span class="en">Book Stay</span></a></li>
     </ul>
     <a href="https://ogphothos.pixieset.com/booking/" class="mob-nav-book" target="_blank">
       <span class="es">Reservar sesión</span><span class="en">Book a session</span>
@@ -1236,6 +1293,44 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       </div>
     </div>
   </div>
+</section>
+
+<!-- BOOK STAYS -->
+<section class="book-stays" id="reservar">
+  <div class="book-stays-top">
+    <div>
+      <p class="eyebrow"><span class="es">Stays curados</span><span class="en">Curated stays</span></p>
+      <h2 class="h2"><span class="es">Hospédate en<br>la <em>costa</em></span><span class="en">Stay on<br>the <em>coast</em></span></h2>
+    </div>
+    <p class="body"><span class="es">Propiedades seleccionadas en Sayulita, Puerto Vallarta y Punta Mita. Reserva directo con nosotros y recibe atención personalizada.</span><span class="en">Curated properties in Sayulita, Puerto Vallarta and Punta Mita. Book directly with us and receive personalized attention.</span></p>
+  </div>
+
+  <div class="book-search">
+    <div class="book-field">
+      <span class="book-label"><span class="es">Destino</span><span class="en">Destination</span></span>
+      <select id="bsDest">
+        <option value="">Todos / All</option>
+        <option value="sayulita">Sayulita</option>
+        <option value="pv">Puerto Vallarta</option>
+        <option value="punta-mita">Punta Mita</option>
+      </select>
+    </div>
+    <div class="book-field">
+      <span class="book-label"><span class="es">Llegada</span><span class="en">Check-in</span></span>
+      <input type="date" id="bsIn"/>
+    </div>
+    <div class="book-field">
+      <span class="book-label"><span class="es">Salida</span><span class="en">Check-out</span></span>
+      <input type="date" id="bsOut"/>
+    </div>
+    <div class="book-field">
+      <span class="book-label"><span class="es">Huéspedes</span><span class="en">Guests</span></span>
+      <input type="number" min="1" max="20" value="2" id="bsGuests"/>
+    </div>
+    <button class="book-btn" onclick="bsSearch()"><span class="es">Buscar</span><span class="en">Search</span></button>
+  </div>
+
+  <div class="book-grid" id="bookGrid"></div>
 </section>
 
 <!-- PRICING -->
@@ -1669,6 +1764,60 @@ document.querySelectorAll('.exp-card').forEach(card => {
     setTimeout(() => card.style.transition = '', 560);
   });
 });
+
+// ── Book Stays — mock data & render ──
+const _bsProps = [
+  { id:1, name:'Casa Selva', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600&q=80&fm=jpg&fit=crop', price:2800, rating:4.9, reviews:38, guests:6, tags:['Alberca','Vista selva','AC'], badge:'Disponible' },
+  { id:2, name:'Palapa Marinero', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&q=80&fm=jpg&fit=crop', price:1900, rating:4.7, reviews:52, guests:2, tags:['Frente al mar','Desayuno incl.'], badge:'Popular' },
+  { id:3, name:'Suite Pacífico', loc:'Puerto Vallarta', dest:'pv', img:'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80&fm=jpg&fit=crop', price:3500, rating:4.8, reviews:91, guests:4, tags:['Hotel boutique','Terraza','Spa'], badge:'Top rated' },
+  { id:4, name:'Villa Nayarit', loc:'Punta Mita', dest:'punta-mita', img:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fm=jpg&fit=crop', price:5200, rating:5.0, reviews:14, guests:8, tags:['Exclusiva','Chef privado','Playa privada'], badge:'Premium' },
+  { id:5, name:'Casa Colibrí', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80&fm=jpg&fit=crop', price:2200, rating:4.6, reviews:73, guests:5, tags:['Jardín tropical','Cocina completa'], badge:null },
+  { id:6, name:'Penthouse Mar Azul', loc:'Puerto Vallarta', dest:'pv', img:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80&fm=jpg&fit=crop', price:4100, rating:4.9, reviews:29, guests:4, tags:['Vista al mar','Rooftop','Gym'], badge:'Nuevo' }
+];
+
+function _bsRenderCards(props) {
+  const grid = document.getElementById('bookGrid');
+  if (!props.length) {
+    grid.innerHTML = '<div class="book-empty"><p>Sin propiedades para esa búsqueda.</p></div>';
+    return;
+  }
+  grid.innerHTML = props.map(p => `
+    <div class="book-card rv">
+      <div class="book-card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+        ${p.badge ? `<span class="book-card-badge">${p.badge}</span>` : ''}
+        <div class="book-card-fav"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="book-card-body">
+        <div class="book-card-loc">${p.loc} · ${p.guests} <span class="es">huéspedes</span><span class="en">guests</span></div>
+        <div class="book-card-name">${p.name}</div>
+        <div class="book-card-tags">${p.tags.map(t => `<span class="book-card-tag">${t}</span>`).join('')}</div>
+        <div class="book-card-footer">
+          <div>
+            <div class="book-card-price-n">$${p.price.toLocaleString()}</div>
+            <div class="book-card-price-l">MXN / <span class="es">noche</span><span class="en">night</span></div>
+          </div>
+          <div class="book-card-rating"><span class="book-card-star">★</span> ${p.rating} <span style="font-weight:400;color:#8A9080;font-size:11px">(${p.reviews})</span></div>
+        </div>
+        <a href="https://wa.me/523221699480?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' en ' + p.loc + '. ¿Está disponible?')}" class="book-card-cta" target="_blank">
+          <span class="es">Consultar disponibilidad</span><span class="en">Check availability</span> →
+        </a>
+      </div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.rv').forEach(el => obs.observe(el));
+}
+
+function bsSearch() {
+  const dest = document.getElementById('bsDest').value;
+  const guests = parseInt(document.getElementById('bsGuests').value) || 1;
+  let filtered = _bsProps;
+  if (dest) filtered = filtered.filter(p => p.dest === dest);
+  filtered = filtered.filter(p => p.guests >= guests);
+  _bsRenderCards(filtered);
+}
+
+_bsRenderCards(_bsProps);
 </script>
 </body>
 </html>
