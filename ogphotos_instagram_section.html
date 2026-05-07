@@ -1,0 +1,520 @@
+
+<style>
+.ig-section {
+  background: #1B3A2D;
+  padding: 80px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 72px;
+  flex-wrap: wrap;
+  border-radius: var(--border-radius-lg);
+}
+
+.ig-copy {
+  max-width: 340px;
+  flex-shrink: 0;
+}
+
+.ig-eyebrow {
+  font-size: 10px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: #8FB59A;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.ig-eyebrow::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: #8FB59A;
+  flex-shrink: 0;
+}
+
+.ig-heading {
+  font-size: 36px;
+  font-weight: 500;
+  color: #FAF7F0;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.ig-heading em {
+  font-style: italic;
+  color: #8FB59A;
+}
+
+.ig-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(250,247,240,.5);
+  margin-bottom: 28px;
+}
+
+.ig-stats {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 32px;
+}
+
+.ig-stat-n {
+  font-size: 22px;
+  font-weight: 500;
+  color: #FAF7F0;
+  line-height: 1;
+}
+
+.ig-stat-l {
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(143,181,154,.5);
+  margin-top: 4px;
+}
+
+.ig-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid rgba(143,181,154,.35);
+  color: #8FB59A;
+  padding: 12px 24px;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.ig-cta:hover {
+  background: rgba(143,181,154,.1);
+  border-color: rgba(143,181,154,.6);
+  color: #FAF7F0;
+}
+
+.ig-cta svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+/* ── iPhone frame ── */
+.phone-wrap {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.phone-frame {
+  width: 260px;
+  background: #0A0A0A;
+  border-radius: 40px;
+  border: 2px solid #2A2A2A;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 0 1px #111, inset 0 0 0 1px #333;
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 90px; height: 28px;
+  background: #0A0A0A;
+  border-radius: 0 0 18px 18px;
+  z-index: 10;
+}
+
+.phone-screen {
+  background: #000;
+  overflow: hidden;
+  border-radius: 38px;
+}
+
+/* Instagram UI inside phone */
+.ig-ui {
+  background: #000;
+  color: #fff;
+  font-family: -apple-system, sans-serif;
+}
+
+.ig-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 14px 10px;
+}
+
+.ig-username-bar {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ig-topbar-icons {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.ig-topbar-icons svg {
+  width: 18px; height: 18px;
+  stroke: #fff;
+  fill: none;
+}
+
+/* Profile header */
+.ig-profile {
+  padding: 4px 14px 10px;
+}
+
+.ig-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.ig-avatar-ring {
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.ig-avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  border: 2px solid #000;
+  overflow: hidden;
+  background: #222;
+}
+
+.ig-avatar-inner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ig-profile-stats {
+  display: flex;
+  gap: 14px;
+  flex: 1;
+}
+
+.ig-ps-item {
+  text-align: center;
+}
+
+.ig-ps-n {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.ig-ps-l {
+  font-size: 9px;
+  color: rgba(255,255,255,.6);
+}
+
+.ig-bio {
+  font-size: 10px;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.ig-bio strong {
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.ig-bio-link {
+  font-size: 10px;
+  color: #5ab3f5;
+}
+
+/* Story highlights */
+.ig-highlights {
+  display: flex;
+  gap: 10px;
+  padding: 8px 14px;
+  overflow: hidden;
+}
+
+.ig-hl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ig-hl-ring {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.ig-hl-ring img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ig-hl-label {
+  font-size: 8px;
+  color: rgba(255,255,255,.7);
+  text-align: center;
+  max-width: 46px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Tab bar */
+.ig-tabs {
+  display: flex;
+  border-top: 0.5px solid rgba(255,255,255,.1);
+  border-bottom: 0.5px solid rgba(255,255,255,.1);
+  margin-bottom: 1px;
+}
+
+.ig-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.ig-tab svg {
+  width: 16px; height: 16px;
+  fill: none;
+  stroke: rgba(255,255,255,.5);
+}
+
+.ig-tab.active svg { stroke: #fff; }
+.ig-tab.active { border-bottom: 1px solid #fff; }
+
+/* Grid */
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: #111;
+}
+
+.ig-grid-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.ig-grid-item img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ig-grid-item .reel-icon {
+  position: absolute;
+  top: 4px; right: 4px;
+  width: 12px; height: 12px;
+}
+
+.ig-grid-item .reel-icon svg {
+  width: 12px; height: 12px;
+  fill: #fff;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.8));
+}
+
+/* Action buttons */
+.ig-actions {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px 10px;
+}
+
+.ig-btn {
+  flex: 1;
+  background: #262626;
+  border: none;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.ig-btn.primary {
+  background: #0095f6;
+}
+
+</style>
+
+<div class="ig-section">
+
+  <!-- Copy left -->
+  <div class="ig-copy">
+    <div class="ig-eyebrow">Síguenos</div>
+    <h2 class="ig-heading">Nuestro trabajo<br>en <em>Instagram</em></h2>
+    <p class="ig-desc">Fotografía, experiencias y hospitalidad en la costa del Pacífico mexicano. Cada imagen cuenta una historia real.</p>
+    <div class="ig-stats">
+      <div>
+        <div class="ig-stat-n">50</div>
+        <div class="ig-stat-l">Publicaciones</div>
+      </div>
+      <div>
+        <div class="ig-stat-n">1,122</div>
+        <div class="ig-stat-l">Seguidores</div>
+      </div>
+      <div>
+        <div class="ig-stat-n">Sayulita</div>
+        <div class="ig-stat-l">Ubicación</div>
+      </div>
+    </div>
+    <a class="ig-cta" href="https://instagram.com/ogcreative.sayulita" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @ogcreative.sayulita
+    </a>
+  </div>
+
+  <!-- iPhone mockup right -->
+  <div class="phone-wrap">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="ig-ui">
+
+          <!-- Top bar -->
+          <div class="ig-topbar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span class="ig-username-bar">ogcreative.sayulita</span>
+            <div class="ig-topbar-icons">
+              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="ig-profile">
+            <div class="ig-profile-top">
+              <div class="ig-avatar-ring">
+                <div class="ig-avatar-inner">
+                  <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=120&q=80&fm=jpg&fit=crop" alt="OG"/>
+                </div>
+              </div>
+              <div class="ig-profile-stats">
+                <div class="ig-ps-item"><div class="ig-ps-n">50</div><div class="ig-ps-l">posts</div></div>
+                <div class="ig-ps-item"><div class="ig-ps-n">1,122</div><div class="ig-ps-l">followers</div></div>
+                <div class="ig-ps-item"><div class="ig-ps-n">2,328</div><div class="ig-ps-l">following</div></div>
+              </div>
+            </div>
+            <div class="ig-bio">
+              <strong>Oswaldo García</strong><br>
+              Lifestyle · Brands · Stays · Photography<br>
+              Visual content for Brands &amp; Stays<br>
+              Sayulita, Mexico
+            </div>
+            <div class="ig-bio-link">ogthephothographerfriend.com</div>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="ig-actions">
+            <div class="ig-btn">Siguiendo</div>
+            <div class="ig-btn">Mensaje</div>
+            <div class="ig-btn">Contacto</div>
+          </div>
+
+          <!-- Story highlights -->
+          <div class="ig-highlights">
+            <div class="ig-hl">
+              <div class="ig-hl-ring">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=80&q=70&fm=jpg&fit=crop" alt=""/>
+              </div>
+              <span class="ig-hl-label">Work</span>
+            </div>
+            <div class="ig-hl">
+              <div class="ig-hl-ring">
+                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=80&q=70&fm=jpg&fit=crop" alt=""/>
+              </div>
+              <span class="ig-hl-label">Stays</span>
+            </div>
+            <div class="ig-hl">
+              <div class="ig-hl-ring">
+                <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=80&q=70&fm=jpg&fit=crop" alt=""/>
+              </div>
+              <span class="ig-hl-label">Experiences</span>
+            </div>
+            <div class="ig-hl">
+              <div class="ig-hl-ring">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=70&fm=jpg&fit=crop" alt=""/>
+              </div>
+              <span class="ig-hl-label">About</span>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="ig-tabs">
+            <div class="ig-tab active">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </div>
+            <div class="ig-tab">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <div class="ig-tab">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div class="ig-tab">
+              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+          </div>
+
+          <!-- Photo grid -->
+          <div class="ig-grid">
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
+            </div>
+            <div class="ig-grid-item">
+              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&q=75&fm=jpg&fit=crop" alt=""/>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
