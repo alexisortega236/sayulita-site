@@ -49,7 +49,7 @@ nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:1
 .hero-tag span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--sage);}
 .hero-dot{width:5px;height:5px;background:var(--leaf);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.5);}}
-.hero-title{font-family:'Fraunces',serif;font-size:clamp(58px,8vw,118px);font-weight:200;line-height:.95;color:var(--bone);margin-bottom:48px;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(58px,8vw,118px);font-weight:200;line-height:.95;color:var(--bone);margin-bottom:48px;opacity:0;animation:up 1s .38s forwards;}
 .hero-title .outline{-webkit-text-stroke:1px rgba(143,181,154,.38);color:transparent;display:block;}
 .hero-title em{font-style:italic;color:var(--sage);display:block;}
 .hero-bottom{display:flex;align-items:flex-end;justify-content:space-between;gap:36px;flex-wrap:wrap;opacity:0;animation:up 1s .65s forwards;}
@@ -203,365 +203,6 @@ nav.scrolled{background:rgba(20,24,16,0.93);backdrop-filter:blur(16px);padding:1
 .p-card.hot .p-btn{background:var(--leaf);color:var(--bone);border-color:transparent;}
 .p-card.hot .p-btn:hover{background:var(--moss);}
 
-/* INSTAGRAM */
-.ig-section {
-  background: #1B3A2D;
-  padding: 80px 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 72px;
-  flex-wrap: wrap;
-}
-
-.ig-copy {
-  max-width: 340px;
-  flex-shrink: 0;
-}
-
-.ig-eyebrow {
-  font-size: 10px;
-  letter-spacing: .24em;
-  text-transform: uppercase;
-  color: #8FB59A;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.ig-eyebrow::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: #8FB59A;
-  flex-shrink: 0;
-}
-
-.ig-heading {
-  font-size: 36px;
-  font-weight: 500;
-  color: #FAF7F0;
-  line-height: 1.1;
-  margin-bottom: 16px;
-}
-
-.ig-heading em {
-  font-style: italic;
-  color: #8FB59A;
-}
-
-.ig-desc {
-  font-size: 14px;
-  line-height: 1.75;
-  color: rgba(250,247,240,.5);
-  margin-bottom: 28px;
-}
-
-.ig-stats {
-  display: flex;
-  gap: 28px;
-  margin-bottom: 32px;
-}
-
-.ig-stat-n {
-  font-size: 22px;
-  font-weight: 500;
-  color: #FAF7F0;
-  line-height: 1;
-}
-
-.ig-stat-l {
-  font-size: 10px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(143,181,154,.5);
-  margin-top: 4px;
-}
-
-.ig-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: transparent;
-  border: 1px solid rgba(143,181,154,.35);
-  color: #8FB59A;
-  padding: 12px 24px;
-  font-size: 11px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 2px;
-  transition: all .2s;
-  cursor: pointer;
-}
-
-.ig-cta:hover {
-  background: rgba(143,181,154,.1);
-  border-color: rgba(143,181,154,.6);
-  color: #FAF7F0;
-}
-
-.ig-cta svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-/* ── iPhone frame ── */
-.phone-wrap {
-  flex-shrink: 0;
-  position: relative;
-}
-
-.phone-frame {
-  width: 260px;
-  background: #0A0A0A;
-  border-radius: 40px;
-  border: 2px solid #2A2A2A;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0 0 1px #111, inset 0 0 0 1px #333;
-}
-
-.phone-notch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 90px; height: 28px;
-  background: #0A0A0A;
-  border-radius: 0 0 18px 18px;
-  z-index: 10;
-}
-
-.phone-screen {
-  background: #000;
-  overflow: hidden;
-  border-radius: 38px;
-}
-
-/* Instagram UI inside phone */
-.ig-ui {
-  background: #000;
-  color: #fff;
-  font-family: -apple-system, sans-serif;
-}
-
-.ig-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 14px 6px;
-}
-
-.ig-username-bar {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-}
-
-.ig-topbar-icons {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.ig-topbar-icons svg {
-  width: 18px; height: 18px;
-  stroke: #fff;
-  fill: none;
-}
-
-/* Profile header */
-.ig-profile {
-  padding: 0 14px 6px;
-}
-
-.ig-profile-top {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 6px;
-}
-
-.ig-avatar-ring {
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  padding: 2px;
-  flex-shrink: 0;
-}
-
-.ig-avatar-inner {
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  border: 2px solid #000;
-  overflow: hidden;
-  background: #222;
-}
-
-.ig-avatar-inner img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.ig-profile-stats {
-  display: flex;
-  gap: 12px;
-  flex: 1;
-}
-
-.ig-ps-item {
-  text-align: center;
-}
-
-.ig-ps-n {
-  font-size: 13px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.2;
-}
-
-.ig-ps-l {
-  font-size: 9px;
-  color: rgba(255,255,255,.6);
-}
-
-.ig-bio {
-  font-size: 10px;
-  line-height: 1.4;
-  color: #fff;
-  margin-bottom: 3px;
-}
-
-.ig-bio strong {
-  font-weight: 600;
-  font-size: 11px;
-}
-
-.ig-bio-link {
-  font-size: 10px;
-  color: #5ab3f5;
-}
-
-/* Story highlights */
-.ig-highlights {
-  display: flex;
-  gap: 10px;
-  padding: 4px 14px;
-  overflow: hidden;
-}
-
-.ig-hl {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.ig-hl-ring {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.2);
-  overflow: hidden;
-  background: #1a1a1a;
-}
-
-.ig-hl-ring img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.ig-hl-label {
-  font-size: 8px;
-  color: rgba(255,255,255,.7);
-  text-align: center;
-  max-width: 46px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-/* Tab bar */
-.ig-tabs {
-  display: flex;
-  border-top: 0.5px solid rgba(255,255,255,.1);
-  border-bottom: 0.5px solid rgba(255,255,255,.1);
-  margin-bottom: 1px;
-}
-
-.ig-tab {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 0;
-}
-
-.ig-tab svg {
-  width: 16px; height: 16px;
-  fill: none;
-  stroke: rgba(255,255,255,.5);
-}
-
-.ig-tab.active svg { stroke: #fff; }
-.ig-tab.active { border-bottom: 1px solid #fff; }
-
-/* Grid */
-.ig-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: #111;
-}
-
-.ig-grid-item {
-  aspect-ratio: 1.18;
-  overflow: hidden;
-  background: #1a1a1a;
-  position: relative;
-}
-
-.ig-grid-item img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.ig-grid-item .reel-icon {
-  position: absolute;
-  top: 4px; right: 4px;
-  width: 12px; height: 12px;
-}
-
-.ig-grid-item .reel-icon svg {
-  width: 12px; height: 12px;
-  fill: #fff;
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,.8));
-}
-
-/* Action buttons */
-.ig-actions {
-  display: flex;
-  gap: 6px;
-  padding: 5px 14px 6px;
-}
-
-.ig-btn {
-  flex: 1;
-  background: #262626;
-  border: none;
-  color: #fff;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 6px 0;
-  border-radius: 6px;
-  text-align: center;
-}
-
-.ig-btn.primary {
-  background: #0095f6;
-}
-
 /* TESTI */
 .testi{background:var(--jungle3);padding:112px 64px;}
 .testi-h{margin-bottom:68px;}
@@ -614,15 +255,14 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 /* RESPONSIVE */
 @media(max-width:1024px){
   nav{padding:22px 40px;}nav.scrolled{padding:14px 40px;}
-  .pad,.services,.exp,.stays,.pricing,.ig-section,.testi,.cta{padding-left:40px;padding-right:40px;}
+  .pad,.services,.exp,.stays,.pricing,.testi,.cta{padding-left:40px;padding-right:40px;}
   .about,.stays-inner{grid-template-columns:1fr;}
   .about-l,.about-r{padding:80px 40px;}
   .svc-top,.exp-header,.pricing-top{grid-template-columns:1fr;gap:18px;}
   .hero-stats,.hero-scroll{display:none;}
-  .ig-section{padding:72px 40px;gap:44px;}
 }
 @media(max-width:768px){
-  .pad,.services,.exp,.stays,.pricing,.ig-section,.testi,.cta{padding:72px 24px;}
+  .pad,.services,.exp,.stays,.pricing,.testi,.cta{padding:72px 24px;}
   nav{padding:17px 24px;}nav.scrolled{padding:11px 24px;}
   .nav-links{display:none;}
   .hero{padding:0 24px 56px;}
@@ -630,10 +270,6 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   .svc{grid-template-columns:58px 1fr;}
   .svc-r{display:none;}
   .exp-grid,.p-grid,.t-grid{grid-template-columns:1fr;}
-  .ig-section{padding:56px 24px;gap:34px;}
-  .ig-copy{max-width:none;}
-  .ig-stats{gap:18px;flex-wrap:wrap;}
-  .phone-frame{width:240px;}
   .ft{grid-template-columns:1fr;gap:30px;}
   .ft-bot{flex-direction:column;align-items:flex-start;}
   body{cursor:auto;}
@@ -893,144 +529,98 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   .bp-bubble { max-width: 85vw; font-size: 14px; }
 }
 
-/* ═══════════════════════════════════════
-   LINE REVEAL — hero title
-   ═══════════════════════════════════════ */
-.line-wrap{display:block;overflow:hidden;}
-.line-inner{display:block;transform:translateY(105%);}
-.hero-title .line-wrap:nth-child(1) .line-inner{animation:lineReveal 1s cubic-bezier(0.16,1,0.3,1) .18s forwards;}
-.hero-title .line-wrap:nth-child(2) .line-inner{animation:lineReveal 1s cubic-bezier(0.16,1,0.3,1) .38s forwards;}
-.hero-title .line-wrap:nth-child(3) .line-inner{animation:lineReveal 1s cubic-bezier(0.16,1,0.3,1) .54s forwards;}
-@keyframes lineReveal{from{transform:translateY(105%);}to{transform:translateY(0);}}
 
-/* ═══════════════════════════════════════
-   HAMBURGER BUTTON
-   ═══════════════════════════════════════ */
-.ham-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:6px;z-index:601;position:relative;}
-.ham-line{width:24px;height:1.5px;background:var(--bone);display:block;transform-origin:center;transition:transform .38s cubic-bezier(.16,1,.3,1),opacity .22s;}
-.ham-btn.open .ham-line:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-.ham-btn.open .ham-line:nth-child(2){opacity:0;transform:scaleX(0);}
-.ham-btn.open .ham-line:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+/* INSTAGRAM SECTION */
+.ig-section{background:var(--jungle3);padding:112px 64px;display:flex;align-items:center;justify-content:center;gap:72px;flex-wrap:wrap;}
+.ig-copy{max-width:340px;flex-shrink:0;}
+.ig-eyebrow{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--sage);display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.ig-eyebrow::before{content:'';width:24px;height:1px;background:var(--sage);flex-shrink:0;}
+.ig-heading{font-family:'Fraunces',serif;font-size:clamp(32px,3.5vw,54px);font-weight:200;color:var(--bone);line-height:1.05;margin-bottom:16px;}
+.ig-heading em{font-style:italic;color:var(--sage);}
+.ig-desc{font-size:15px;line-height:1.75;color:rgba(250,247,240,.5);margin-bottom:28px;max-width:320px;}
+.ig-stats{display:flex;gap:28px;margin-bottom:32px;}
+.ig-stat-n{font-family:'Fraunces',serif;font-size:28px;font-weight:200;color:var(--bone);line-height:1;}
+.ig-stat-l{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(143,181,154,.45);margin-top:4px;}
+.ig-cta{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(143,181,154,.35);color:var(--sage);padding:12px 26px;font-family:'Syne',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s;cursor:none;}
+.ig-cta:hover{background:rgba(143,181,154,.1);border-color:rgba(143,181,154,.6);color:var(--bone);}
+.ig-cta svg{width:14px;height:14px;flex-shrink:0;}
+/* Phone frame */
+.phone-wrap{flex-shrink:0;}
+.phone-frame{width:260px;background:#0A0A0A;border-radius:40px;border:2px solid #2A2A2A;overflow:hidden;position:relative;box-shadow:0 0 0 1px #111;}
+.phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:90px;height:28px;background:#0A0A0A;border-radius:0 0 18px 18px;z-index:10;}
+.phone-screen{background:#000;overflow:hidden;border-radius:38px;}
+.ig-ui{background:#000;color:#fff;font-family:-apple-system,sans-serif;}
+.ig-topbar{display:flex;align-items:center;justify-content:space-between;padding:36px 14px 10px;}
+.ig-username-bar{font-size:13px;font-weight:600;color:#fff;}
+.ig-topbar-icons{display:flex;gap:14px;align-items:center;}
+.ig-topbar-icons svg{width:18px;height:18px;stroke:#fff;fill:none;}
+.ig-profile{padding:4px 14px 10px;}
+.ig-profile-top{display:flex;align-items:center;gap:16px;margin-bottom:10px;}
+.ig-avatar-ring{width:58px;height:58px;border-radius:50%;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);padding:2px;flex-shrink:0;}
+.ig-avatar-inner{width:100%;height:100%;border-radius:50%;border:2px solid #000;overflow:hidden;background:#222;}
+.ig-avatar-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+.ig-profile-stats{display:flex;gap:14px;flex:1;}
+.ig-ps-item{text-align:center;}
+.ig-ps-n{font-size:13px;font-weight:600;color:#fff;line-height:1.2;}
+.ig-ps-l{font-size:9px;color:rgba(255,255,255,.6);}
+.ig-bio{font-size:10px;line-height:1.5;color:#fff;margin-bottom:6px;}
+.ig-bio strong{font-weight:600;font-size:11px;}
+.ig-bio-link{font-size:10px;color:#5ab3f5;}
+.ig-highlights{display:flex;gap:10px;padding:8px 14px;overflow:hidden;}
+.ig-hl{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;}
+.ig-hl-ring{width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);overflow:hidden;background:#1a1a1a;}
+.ig-hl-ring img{width:100%;height:100%;object-fit:cover;display:block;}
+.ig-hl-label{font-size:8px;color:rgba(255,255,255,.7);text-align:center;max-width:46px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.ig-actions{display:flex;gap:6px;padding:8px 14px 10px;}
+.ig-btn{flex:1;background:#262626;border:none;color:#fff;font-size:10px;font-weight:600;padding:6px 0;border-radius:6px;text-align:center;}
+.ig-tabs{display:flex;border-top:.5px solid rgba(255,255,255,.1);border-bottom:.5px solid rgba(255,255,255,.1);margin-bottom:1px;}
+.ig-tab{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 0;}
+.ig-tab svg{width:16px;height:16px;fill:none;stroke:rgba(255,255,255,.5);}
+.ig-tab.active svg{stroke:#fff;}
+.ig-tab.active{border-bottom:1px solid #fff;}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#111;}
+.ig-grid-item{aspect-ratio:1;overflow:hidden;background:#1a1a1a;position:relative;}
+.ig-grid-item img{width:100%;height:100%;object-fit:cover;display:block;}
+.ig-grid-item .reel-icon{position:absolute;top:4px;right:4px;width:12px;height:12px;}
+.ig-grid-item .reel-icon svg{width:12px;height:12px;fill:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.8));}
+@media(max-width:1024px){.ig-section{padding:80px 40px;gap:48px;}}
+@media(max-width:768px){.ig-section{padding:72px 24px;gap:40px;flex-direction:column;align-items:center;}.ig-copy{max-width:100%;text-align:center;}.ig-eyebrow{justify-content:center;}.ig-stats{justify-content:center;}.ig-cta{margin:0 auto;}}
 
-/* ═══════════════════════════════════════
-   MOBILE NAV OVERLAY
-   ═══════════════════════════════════════ */
-.mob-nav{position:fixed;inset:0;z-index:490;display:flex;align-items:center;justify-content:center;background:var(--jungle3);clip-path:circle(0% at 92% 6%);transition:clip-path .68s cubic-bezier(.16,1,.3,1);pointer-events:none;}
-.mob-nav.open{clip-path:circle(150% at 92% 6%);pointer-events:all;}
-.mob-nav-inner{display:flex;flex-direction:column;align-items:center;gap:52px;}
-.mob-nav-links{list-style:none;display:flex;flex-direction:column;align-items:center;gap:4px;}
-.mob-nav-links li{overflow:hidden;}
-.mob-nav-links a{font-family:'Fraunces',serif;font-size:clamp(34px,8vw,54px);font-weight:200;color:var(--bone);text-decoration:none;display:block;transform:translateY(110%);transition:transform .55s cubic-bezier(.16,1,.3,1),color .2s;}
-.mob-nav-links a:hover{color:var(--sage);}
-.mob-nav.open .mob-nav-links li:nth-child(1) a{transform:translateY(0);transition-delay:.08s;}
-.mob-nav.open .mob-nav-links li:nth-child(2) a{transform:translateY(0);transition-delay:.15s;}
-.mob-nav.open .mob-nav-links li:nth-child(3) a{transform:translateY(0);transition-delay:.22s;}
-.mob-nav.open .mob-nav-links li:nth-child(4) a{transform:translateY(0);transition-delay:.29s;}
-.mob-nav.open .mob-nav-links li:nth-child(5) a{transform:translateY(0);transition-delay:.36s;}
-.mob-nav-book{font-size:11px;letter-spacing:.22em;text-transform:uppercase;background:var(--clay);color:var(--bone);padding:14px 38px;border-radius:2px;text-decoration:none;opacity:0;transform:translateY(14px);transition:opacity .42s .38s,transform .42s .38s,background .2s;}
-.mob-nav.open .mob-nav-book{opacity:1;transform:translateY(0);}
-.mob-nav-book:hover{background:var(--clay2);}
 
-@media(max-width:768px){
-  .ham-btn{display:flex;}
-  .nav-book{display:none;}
-}
-
-/* ═══════════════════════════════════════
-   SCROLL PROGRESS BAR
-   ═══════════════════════════════════════ */
-.scroll-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--clay);z-index:9997;pointer-events:none;}
-
-/* ═══════════════════════════════════════
-   SHIMMER — pricing card destacado
-   ═══════════════════════════════════════ */
-.p-card.hot::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);background-size:200% 100%;animation:shimmer 3.5s ease-in-out infinite;pointer-events:none;}
-@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
-
-/* ═══════════════════════════════════════
-   3D TILT — experience cards
-   ═══════════════════════════════════════ */
-.exp-card{transform-style:preserve-3d;will-change:transform;}
-
-/* ═══════════════════════════════════════
-   DIAGONAL DIVIDERS
-   ═══════════════════════════════════════ */
-.exp{clip-path:polygon(0 44px,100% 0,100% 100%,0 100%);margin-top:-44px;padding-top:calc(112px + 44px);z-index:2;}
-.testi{clip-path:polygon(0 0,100% 44px,100% 100%,0 100%);margin-top:-44px;padding-top:calc(112px + 44px);z-index:2;}
-@media(max-width:1024px){.exp,.testi{padding-top:calc(112px + 44px);}}
-@media(max-width:768px){
-  .exp{clip-path:polygon(0 28px,100% 0,100% 100%,0 100%);margin-top:-28px;padding-top:calc(72px + 28px);}
-  .testi{clip-path:polygon(0 0,100% 28px,100% 100%,0 100%);margin-top:-28px;padding-top:calc(72px + 28px);}
-}
-
-/* ═══════════════════════════════════════
-   BOT BAR SLIDE-UP
-   ═══════════════════════════════════════ */
-@keyframes botSlideUp{to{transform:translateX(-50%) translateY(0);}}
-@keyframes botSlideUpMob{to{transform:translateY(0);}}
-.bot-bar{transform:translateX(-50%) translateY(100%);animation:botSlideUp .7s cubic-bezier(0.16,1,0.3,1) 1.5s forwards;}
-@media(max-width:768px){.bot-bar{transform:translateY(100%);animation-name:botSlideUpMob;}}
-
-/* ═══════════════════════════════════════
-   BOOK STAYS — property listings
-   ═══════════════════════════════════════ */
-.book-stays{background:var(--bone);padding:112px 64px;}
-.book-stays-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:48px;}
-.book-search{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;background:var(--jungle2);border:1px solid rgba(143,181,154,.18);border-radius:3px;overflow:hidden;margin-bottom:60px;}
-.book-field{padding:18px 22px;border-right:1px solid rgba(143,181,154,.1);display:flex;flex-direction:column;gap:5px;}
-.book-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(143,181,154,.48);}
-.book-field select,.book-field input{background:transparent;border:none;color:var(--bone);font-family:'Syne',sans-serif;font-size:14px;outline:none;width:100%;-webkit-appearance:none;}
-.book-field select option{background:var(--jungle2);color:var(--bone);}
-.book-field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.65);opacity:.5;cursor:pointer;}
-.book-field input[type="number"]{-moz-appearance:textfield;}
-.book-field input[type="number"]::-webkit-outer-spin-button,.book-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
-.book-btn{background:var(--clay);color:var(--bone);border:none;padding:0 36px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:background .2s;white-space:nowrap;}
-.book-btn:hover{background:var(--clay2);}
-.book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--raw3);}
-.book-card{background:var(--bone);position:relative;overflow:hidden;transition:box-shadow .3s;}
-.book-card:hover{box-shadow:0 12px 48px rgba(22,51,38,.13);z-index:1;}
-.book-card-img{aspect-ratio:4/3;overflow:hidden;position:relative;}
-.book-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
-.book-card:hover .book-card-img img{transform:scale(1.05);}
-.book-card-badge{position:absolute;top:14px;left:14px;background:rgba(22,51,38,.88);color:var(--sage);font-size:9px;letter-spacing:.17em;text-transform:uppercase;padding:5px 10px;border-radius:2px;backdrop-filter:blur(6px);}
-.book-card-fav{position:absolute;top:14px;right:14px;width:30px;height:30px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s;cursor:none;}
-.book-card-fav:hover{background:rgba(255,255,255,.3);}
-.book-card-fav svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:1.8;}
-.book-card-body{padding:22px 24px 26px;}
-.book-card-loc{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
-.book-card-loc::before{content:'';width:12px;height:1px;background:var(--leaf);flex-shrink:0;}
-.book-card-name{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:10px;}
-.book-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
-.book-card-tag{font-size:9px;letter-spacing:.12em;background:var(--raw2);color:#8A9080;padding:4px 9px;border-radius:2px;}
-.book-card-footer{display:flex;align-items:flex-end;justify-content:space-between;}
-.book-card-price-n{font-family:'Fraunces',serif;font-size:24px;font-weight:200;color:var(--ink);line-height:1;}
-.book-card-price-l{font-size:10px;color:#8A9080;margin-top:2px;}
-.book-card-rating{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--ink);}
-.book-card-star{color:var(--gold);}
-.book-card-cta{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--jungle);color:var(--bone);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:12px 20px;border-radius:2px;text-decoration:none;margin-top:16px;transition:background .2s,gap .2s;}
-.book-card-cta:hover{background:var(--jungle2);gap:14px;}
-.book-empty{grid-column:1/-1;text-align:center;padding:72px 0;}
-.book-empty p{font-family:'Fraunces',serif;font-size:22px;font-weight:200;color:#8A9080;font-style:italic;}
-.mob-nav.open .mob-nav-links li:nth-child(6) a{transform:translateY(0);transition-delay:.43s;}
-@media(max-width:1024px){
-  .book-stays{padding-left:40px;padding-right:40px;}
-  .book-search{grid-template-columns:1fr 1fr;}
-  .book-btn{padding:18px 32px;}
-  .book-grid{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:768px){
-  .book-stays{padding:72px 24px;}
-  .book-stays-top{grid-template-columns:1fr;}
-  .book-search{grid-template-columns:1fr;}
-  .book-field{border-right:none;border-bottom:1px solid rgba(143,181,154,.1);}
-  .book-grid{grid-template-columns:1fr;}
-}
+/* ── KALIVA VILLAS SECTION ── */
+.kaliva{background:var(--bone);padding:112px 64px;}
+.kaliva-top{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:48px;}
+.kaliva-badge{display:inline-flex;align-items:center;gap:8px;background:var(--jungle);color:var(--sage);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:16px;}
+.kaliva-badge::before{content:'';width:6px;height:6px;background:var(--leaf);border-radius:50%;animation:pulse 2s infinite;}
+.kaliva-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--raw3);}
+.kaliva-card{background:var(--bone);position:relative;overflow:hidden;transition:box-shadow .3s;}
+.kaliva-card:hover{box-shadow:0 12px 48px rgba(22,51,38,.13);z-index:1;}
+.kaliva-card-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--jungle2);}
+.kaliva-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.kaliva-card:hover .kaliva-card-img img{transform:scale(1.05);}
+.kaliva-card-badge{position:absolute;top:14px;left:14px;background:rgba(22,51,38,.88);color:var(--sage);font-size:9px;letter-spacing:.17em;text-transform:uppercase;padding:5px 10px;border-radius:2px;backdrop-filter:blur(6px);}
+.kaliva-card-ref{position:absolute;top:14px;right:14px;background:rgba(193,127,82,.88);color:var(--bone);font-size:8px;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:2px;}
+.kaliva-card-body{padding:22px 24px 26px;}
+.kaliva-card-loc{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.kaliva-card-loc::before{content:'';width:12px;height:1px;background:var(--leaf);flex-shrink:0;}
+.kaliva-card-name{font-family:'Fraunces',serif;font-size:20px;font-weight:300;color:var(--ink);line-height:1.1;margin-bottom:10px;}
+.kaliva-card-desc{font-size:12px;color:#8A9080;line-height:1.55;margin-bottom:16px;}
+.kaliva-card-cta{display:flex;align-items:center;justify-content:center;gap:9px;background:var(--jungle);color:var(--bone);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:12px 20px;border-radius:2px;text-decoration:none;transition:background .2s,gap .2s;}
+.kaliva-card:hover .kaliva-card-cta,.kaliva-card-cta:hover{background:var(--jungle2);gap:14px;}
+.kaliva-loading{grid-column:1/-1;text-align:center;padding:72px 0;}
+.kaliva-loading-dot{display:inline-block;width:8px;height:8px;background:var(--leaf);border-radius:50%;margin:0 4px;animation:typingBounce .9s ease-in-out infinite;}
+.kaliva-loading-dot:nth-child(2){animation-delay:.15s;}
+.kaliva-loading-dot:nth-child(3){animation-delay:.3s;}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0);opacity:.5;}30%{transform:translateY(-6px);opacity:1;}}
+.kaliva-ref-note{text-align:center;margin-top:24px;font-size:11px;color:#8A9080;display:flex;align-items:center;justify-content:center;gap:8px;}
+.kaliva-ref-note::before,.kaliva-ref-note::after{content:'';flex:1;height:1px;background:var(--raw3);}
+@media(max-width:1024px){.kaliva{padding:80px 40px;}.kaliva-grid{grid-template-columns:repeat(2,1fr);}.kaliva-top{grid-template-columns:1fr;}}
+@media(max-width:768px){.kaliva{padding:72px 24px;}.kaliva-grid{grid-template-columns:1fr;}}
 
 </style>
 </head>
 <body data-lang="es">
 
-<div class="scroll-bar" id="scrollBar"></div>
 <div class="cursor" id="cur"></div>
 <div class="cursor-ring" id="ring"></div>
 
@@ -1043,8 +633,6 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       <li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li>
       <li><a href="#stays">Stays</a></li>
       <li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
-      <li><a href="#instagram">Instagram</a></li>
-      <li><a href="#reservar"><span class="es">Reservar</span><span class="en">Book Stay</span></a></li>
     </ul>
     <div class="lang-toggle">
       <button class="lang-btn active" data-l="es">ES</button>
@@ -1054,29 +642,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       <span class="es">Reservar</span><span class="en">Book</span>
     </a>
   </div>
-  <button class="ham-btn" id="hamBtn" aria-label="Menu">
-    <span class="ham-line"></span>
-    <span class="ham-line"></span>
-    <span class="ham-line"></span>
-  </button>
 </nav>
-
-<!-- MOBILE NAV -->
-<div class="mob-nav" id="mobNav">
-  <div class="mob-nav-inner">
-    <ul class="mob-nav-links">
-      <li><a href="#servicios" onclick="_closeMob()"><span class="es">Servicios</span><span class="en">Services</span></a></li>
-      <li><a href="#experiencias" onclick="_closeMob()"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li>
-      <li><a href="#stays" onclick="_closeMob()">Stays</a></li>
-      <li><a href="#precios" onclick="_closeMob()"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
-      <li><a href="#instagram" onclick="_closeMob()">Instagram</a></li>
-      <li><a href="#reservar" onclick="_closeMob()"><span class="es">Reservar</span><span class="en">Book Stay</span></a></li>
-    </ul>
-    <a href="https://ogphothos.pixieset.com/booking/" class="mob-nav-book" target="_blank">
-      <span class="es">Reservar sesión</span><span class="en">Book a session</span>
-    </a>
-  </div>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1101,9 +667,9 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
       <span class="en">Sayulita · Puerto Vallarta · Available</span>
     </div>
     <h1 class="hero-title">
-      <span class="line-wrap"><span class="outline line-inner"><span class="es">Momentos</span><span class="en">Moments</span></span></span>
-      <span class="line-wrap"><em class="line-inner"><span class="es">que quedan</span><span class="en">that last</span></em></span>
-      <span class="line-wrap"><span class="line-inner"><span class="es">para siempre</span><span class="en">forever</span></span></span>
+      <span class="outline"><span class="es">Momentos</span><span class="en">Moments</span></span>
+      <em><span class="es">que quedan</span><span class="en">that last</span></em>
+      <span><span class="es">para siempre</span><span class="en">forever</span></span>
     </h1>
     <div class="hero-bottom">
       <p class="hero-desc">
@@ -1188,6 +754,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 
   </div>
 </div>
+</section>
 
 <!-- MARQUEE -->
 <div class="mq">
@@ -1295,42 +862,26 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   </div>
 </section>
 
-<!-- BOOK STAYS -->
-<section class="book-stays" id="reservar">
-  <div class="book-stays-top">
+
+<!-- KALIVA VILLAS -->
+<section class="kaliva" id="villas">
+  <div class="kaliva-top rv">
     <div>
-      <p class="eyebrow"><span class="es">Stays curados</span><span class="en">Curated stays</span></p>
-      <h2 class="h2"><span class="es">Hospédate en<br>la <em>costa</em></span><span class="en">Stay on<br>the <em>coast</em></span></h2>
+      <div class="kaliva-badge">Kaliva Sayulita · En vivo</div>
+      <h2 class="h2"><span class="es">Villas en<br><em>Sayulita</em></span><span class="en">Villas in<br><em>Sayulita</em></span></h2>
     </div>
-    <p class="body"><span class="es">Propiedades seleccionadas en Sayulita, Puerto Vallarta y Punta Mita. Reserva directo con nosotros y recibe atención personalizada.</span><span class="en">Curated properties in Sayulita, Puerto Vallarta and Punta Mita. Book directly with us and receive personalized attention.</span></p>
+    <div>
+      <p class="body"><span class="es">Propiedades exclusivas en Sayulita gestionadas por nuestro equipo. Reserva directamente con nosotros y recibe atención personalizada.</span><span class="en">Exclusive properties in Sayulita managed by our team. Book directly with us and get personalized attention.</span></p>
+    </div>
   </div>
-
-  <div class="book-search">
-    <div class="book-field">
-      <span class="book-label"><span class="es">Destino</span><span class="en">Destination</span></span>
-      <select id="bsDest">
-        <option value="">Todos / All</option>
-        <option value="sayulita">Sayulita</option>
-        <option value="pv">Puerto Vallarta</option>
-        <option value="punta-mita">Punta Mita</option>
-      </select>
+  <div class="kaliva-grid" id="kalivaGrid">
+    <div class="kaliva-loading">
+      <div class="kaliva-loading-dot"></div>
+      <div class="kaliva-loading-dot"></div>
+      <div class="kaliva-loading-dot"></div>
     </div>
-    <div class="book-field">
-      <span class="book-label"><span class="es">Llegada</span><span class="en">Check-in</span></span>
-      <input type="date" id="bsIn"/>
-    </div>
-    <div class="book-field">
-      <span class="book-label"><span class="es">Salida</span><span class="en">Check-out</span></span>
-      <input type="date" id="bsOut"/>
-    </div>
-    <div class="book-field">
-      <span class="book-label"><span class="es">Huéspedes</span><span class="en">Guests</span></span>
-      <input type="number" min="1" max="20" value="2" id="bsGuests"/>
-    </div>
-    <button class="book-btn" onclick="bsSearch()"><span class="es">Buscar</span><span class="en">Search</span></button>
   </div>
-
-  <div class="book-grid" id="bookGrid"></div>
+  <p class="kaliva-ref-note">REF:OGPHOTOS · Todas las reservas incluyen código de referido</p>
 </section>
 
 <!-- PRICING -->
@@ -1349,6 +900,79 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   </div>
 </section>
 
+
+<!-- INSTAGRAM -->
+<section class="ig-section">
+  <div class="ig-copy">
+    <p class="ig-eyebrow"><span class="es">Síguenos</span><span class="en">Follow us</span></p>
+    <h2 class="ig-heading"><span class="es">Nuestro trabajo<br>en <em>Instagram</em></span><span class="en">Our work<br>on <em>Instagram</em></span></h2>
+    <p class="ig-desc"><span class="es">Fotografía, experiencias y hospitalidad en la costa del Pacífico mexicano. Cada imagen cuenta una historia real.</span><span class="en">Photography, experiences and hospitality on Mexico's Pacific coast. Every image tells a real story.</span></p>
+    <div class="ig-stats">
+      <div><div class="ig-stat-n">50</div><div class="ig-stat-l"><span class="es">Publicaciones</span><span class="en">Posts</span></div></div>
+      <div><div class="ig-stat-n">1,122</div><div class="ig-stat-l"><span class="es">Seguidores</span><span class="en">Followers</span></div></div>
+      <div><div class="ig-stat-n">Sayulita</div><div class="ig-stat-l"><span class="es">Ubicación</span><span class="en">Location</span></div></div>
+    </div>
+    <a class="ig-cta" href="https://instagram.com/ogcreative.sayulita" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @ogcreative.sayulita
+    </a>
+  </div>
+  <div class="phone-wrap">
+    <div class="phone-frame">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="ig-ui">
+          <div class="ig-topbar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            <span class="ig-username-bar">ogcreative.sayulita</span>
+            <div class="ig-topbar-icons"><svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          </div>
+          <div class="ig-profile">
+            <div class="ig-profile-top">
+              <div class="ig-avatar-ring"><div class="ig-avatar-inner"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=120&q=80&fm=jpg&fit=crop" alt="OG"/></div></div>
+              <div class="ig-profile-stats">
+                <div class="ig-ps-item"><div class="ig-ps-n">50</div><div class="ig-ps-l">posts</div></div>
+                <div class="ig-ps-item"><div class="ig-ps-n">1,122</div><div class="ig-ps-l">followers</div></div>
+                <div class="ig-ps-item"><div class="ig-ps-n">2,328</div><div class="ig-ps-l">following</div></div>
+              </div>
+            </div>
+            <div class="ig-bio"><strong>Oswaldo García</strong><br>Lifestyle · Brands · Stays · Photography<br>Visual content for Brands &amp; Stays<br>Sayulita, Mexico</div>
+            <div class="ig-bio-link">ogthephothographerfriend.com</div>
+          </div>
+          <div class="ig-actions">
+            <div class="ig-btn"><span class="es">Siguiendo</span><span class="en">Following</span></div>
+            <div class="ig-btn"><span class="es">Mensaje</span><span class="en">Message</span></div>
+            <div class="ig-btn"><span class="es">Contacto</span><span class="en">Contact</span></div>
+          </div>
+          <div class="ig-highlights">
+            <div class="ig-hl"><div class="ig-hl-ring"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=80&q=70&fm=jpg&fit=crop" alt=""/></div><span class="ig-hl-label">Work</span></div>
+            <div class="ig-hl"><div class="ig-hl-ring"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=80&q=70&fm=jpg&fit=crop" alt=""/></div><span class="ig-hl-label">Stays</span></div>
+            <div class="ig-hl"><div class="ig-hl-ring"><img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=80&q=70&fm=jpg&fit=crop" alt=""/></div><span class="ig-hl-label">Experiences</span></div>
+            <div class="ig-hl"><div class="ig-hl-ring"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=70&fm=jpg&fit=crop" alt=""/></div><span class="ig-hl-label">About</span></div>
+          </div>
+          <div class="ig-tabs">
+            <div class="ig-tab active"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+            <div class="ig-tab"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+            <div class="ig-tab"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/></svg></div>
+            <div class="ig-tab"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          </div>
+          <div class="ig-grid">
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=75&fm=jpg&fit=crop" alt=""/><div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=200&q=75&fm=jpg&fit=crop" alt=""/><div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=75&fm=jpg&fit=crop" alt=""/><div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div></div>
+            <div class="ig-grid-item"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&q=75&fm=jpg&fit=crop" alt=""/></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testi">
   <div class="testi-h">
@@ -1362,164 +986,6 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="ig-section" id="instagram">
-
-  <!-- Copy left -->
-  <div class="ig-copy">
-    <div class="ig-eyebrow">Siguenos</div>
-    <h2 class="ig-heading">Nuestro trabajo<br>en <em>Instagram</em></h2>
-    <p class="ig-desc">Fotografia, experiencias y hospitalidad en la costa del Pacifico mexicano. Cada imagen cuenta una historia real.</p>
-    <div class="ig-stats">
-      <div>
-        <div class="ig-stat-n">50</div>
-        <div class="ig-stat-l">Publicaciones</div>
-      </div>
-      <div>
-        <div class="ig-stat-n">1,122</div>
-        <div class="ig-stat-l">Seguidores</div>
-      </div>
-      <div>
-        <div class="ig-stat-n">Sayulita</div>
-        <div class="ig-stat-l">Ubicacion</div>
-      </div>
-    </div>
-    <a class="ig-cta" href="https://instagram.com/ogcreative.sayulita" target="_blank">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-      @ogcreative.sayulita
-    </a>
-  </div>
-
-  <!-- iPhone mockup right -->
-  <div class="phone-wrap">
-    <div class="phone-frame">
-      <div class="phone-notch"></div>
-      <div class="phone-screen">
-        <div class="ig-ui">
-
-          <!-- Top bar -->
-          <div class="ig-topbar">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-            <span class="ig-username-bar">ogcreative.sayulita</span>
-            <div class="ig-topbar-icons">
-              <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-          </div>
-
-          <!-- Profile -->
-          <div class="ig-profile">
-            <div class="ig-profile-top">
-              <div class="ig-avatar-ring">
-                <div class="ig-avatar-inner">
-                  <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=120&q=80&fm=jpg&fit=crop" alt="OG"/>
-                </div>
-              </div>
-              <div class="ig-profile-stats">
-                <div class="ig-ps-item"><div class="ig-ps-n">50</div><div class="ig-ps-l">posts</div></div>
-                <div class="ig-ps-item"><div class="ig-ps-n">1,122</div><div class="ig-ps-l">followers</div></div>
-                <div class="ig-ps-item"><div class="ig-ps-n">2,328</div><div class="ig-ps-l">following</div></div>
-              </div>
-            </div>
-            <div class="ig-bio">
-              <strong>Oswaldo Garcia</strong><br>
-              Lifestyle - Brands - Stays - Photography<br>
-              Visual content for Brands &amp; Stays<br>
-              Sayulita, Mexico
-            </div>
-            <div class="ig-bio-link">ogthephothographerfriend.com</div>
-          </div>
-
-          <!-- Action buttons -->
-          <div class="ig-actions">
-            <div class="ig-btn">Siguiendo</div>
-            <div class="ig-btn">Mensaje</div>
-            <div class="ig-btn">Contacto</div>
-          </div>
-
-          <!-- Story highlights -->
-          <div class="ig-highlights">
-            <div class="ig-hl">
-              <div class="ig-hl-ring">
-                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=80&q=70&fm=jpg&fit=crop" alt=""/>
-              </div>
-              <span class="ig-hl-label">Work</span>
-            </div>
-            <div class="ig-hl">
-              <div class="ig-hl-ring">
-                <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=80&q=70&fm=jpg&fit=crop" alt=""/>
-              </div>
-              <span class="ig-hl-label">Stays</span>
-            </div>
-            <div class="ig-hl">
-              <div class="ig-hl-ring">
-                <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=80&q=70&fm=jpg&fit=crop" alt=""/>
-              </div>
-              <span class="ig-hl-label">Experiences</span>
-            </div>
-            <div class="ig-hl">
-              <div class="ig-hl-ring">
-                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=70&fm=jpg&fit=crop" alt=""/>
-              </div>
-              <span class="ig-hl-label">About</span>
-            </div>
-          </div>
-
-          <!-- Tabs -->
-          <div class="ig-tabs">
-            <div class="ig-tab active">
-              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-            </div>
-            <div class="ig-tab">
-              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            </div>
-            <div class="ig-tab">
-              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5l3 3 3-3h7V2z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <div class="ig-tab">
-              <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-          </div>
-
-          <!-- Photo grid -->
-          <div class="ig-grid">
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-              <div class="reel-icon"><svg viewBox="0 0 24 24"><path d="M21 2H3v16h5l3 3 3-3h7V2zM7 2v16M17 2v16M3 9h18M3 14h18"/></svg></div>
-            </div>
-            <div class="ig-grid-item">
-              <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&q=75&fm=jpg&fit=crop" alt=""/>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
 <!-- CTA -->
 <section class="cta" id="contacto">
   <p class="eyebrow"><span class="es">¿Listo para empezar?</span><span class="en">Ready to start?</span></p>
@@ -1527,7 +993,7 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   <p class="body"><span class="es">Ya sea una sesión, un proyecto completo o una experiencia curada, estamos listos para planear algo memorable contigo.</span><span class="en">Whether it's a session, a full project or a curated experience, we're ready to plan something memorable with you.</span></p>
   <div class="cta-btns">
     <a href="https://ogphothos.pixieset.com/booking/" class="btn-cm" target="_blank"><span class="es">Agendar en Pixieset</span><span class="en">Book on Pixieset</span></a>
-    <a href="https://wa.me/523221699480" class="btn-cg" target="_blank"><span class="es">WhatsApp</span><span class="en">WhatsApp</span></a>
+    <a href="https://wa.me/521XXXXXXXXXX" class="btn-cg" target="_blank"><span class="es">WhatsApp</span><span class="en">WhatsApp</span></a>
   </div>
 </section>
 
@@ -1536,12 +1002,12 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   <div class="ft">
     <div><div class="ft-brand">OGPHOTOS</div><p class="ft-tag"><span class="es">Fotografía, experiencias y hospitalidad en la costa del Pacífico mexicano.</span><span class="en">Photography, experiences and hospitality on Mexico's Pacific coast.</span></p></div>
     <div class="ft-col"><h6><span class="es">Visual</span><span class="en">Visual</span></h6><ul><li><a href="#servicios"><span class="es">Fotografía Comercial</span><span class="en">Commercial Photography</span></a></li><li><a href="#servicios">Lifestyle</a></li><li><a href="#servicios">Engagement</a></li><li><a href="#servicios"><span class="es">Contrato Mensual</span><span class="en">Monthly Contract</span></a></li></ul></div>
-    <div class="ft-col"><h6><span class="es">Más</span><span class="en">More</span></h6><ul><li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li><li><a href="#stays">Stays · OTAs</a></li><li><a href="#instagram">Instagram</a></li><li><a href="#servicios"><span class="es">Marketing Digital</span><span class="en">Digital Marketing</span></a></li><li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li></ul></div>
-    <div class="ft-col"><h6><span class="es">Contacto</span><span class="en">Contact</span></h6><ul><li><a href="https://ogphothos.pixieset.com/booking/" target="_blank"><span class="es">Reservar sesión</span><span class="en">Book a session</span></a></li><li><a href="https://wa.me/523221699480" target="_blank">WhatsApp</a></li><li><a href="https://www.instagram.com/ogcreative.sayulita/" target="_blank">Instagram</a></li><li><a href="#"><span class="es">Sayulita, México</span><span class="en">Sayulita, Mexico</span></a></li></ul></div>
+    <div class="ft-col"><h6><span class="es">Más</span><span class="en">More</span></h6><ul><li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li><li><a href="#stays">Stays · OTAs</a></li><li><a href="#servicios"><span class="es">Marketing Digital</span><span class="en">Digital Marketing</span></a></li><li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li></ul></div>
+    <div class="ft-col"><h6><span class="es">Contacto</span><span class="en">Contact</span></h6><ul><li><a href="https://ogphothos.pixieset.com/booking/" target="_blank"><span class="es">Reservar sesión</span><span class="en">Book a session</span></a></li><li><a href="https://wa.me/521XXXXXXXXXX">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="#"><span class="es">Sayulita, México</span><span class="en">Sayulita, Mexico</span></a></li></ul></div>
   </div>
   <div class="ft-bot">
     <p class="ft-copy">© 2026 OGPHOTOS. <span class="es">Todos los derechos reservados.</span><span class="en">All rights reserved.</span></p>
-    <div class="ft-soc"><a href="https://www.instagram.com/ogcreative.sayulita/" target="_blank">Instagram</a><a href="https://wa.me/523221699480" target="_blank">WhatsApp</a><a href="https://ogphothos.pixieset.com/booking/" target="_blank">Pixieset</a></div>
+    <div class="ft-soc"><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="https://ogphothos.pixieset.com/booking/" target="_blank">Pixieset</a></div>
   </div>
 </footer>
 
@@ -1551,41 +1017,36 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 //  BOT LOGIC — HERO + STICKY
 // ═══════════════════════════════════════
 
-// Mock responses (replace with real API call to Flask backend)
-const responses = {
-  es: {
-    default: ['¡Claro! Te puedo ayudar con eso. ¿Qué tipo de sesión tienes en mente?', 'Con gusto te oriento. ¿Es para un negocio o algo personal?', '¡Perfecto! Cuéntame un poco más para darte la mejor opción.'],
-    precio: ['Las sesiones personales comienzan en $2,500 MXN (30 min / 10 fotos). Los paquetes comerciales desde $3,500 MXN. ¿Para qué necesitas las fotos?', 'El paquete más popular para negocios es el Proyecto Completo a $12,000 MXN con 60–80 fotos. ¿Te cuento qué incluye?'],
-    agendar: ['¡Genial! Para agendar necesito saber: ¿qué tipo de sesión quieres y en qué fechas tienes disponibilidad?', 'Podemos agendar directo por aquí 📅 ¿Cuál es tu nombre y qué servicio te interesa?'],
-    servicios: ['OGPHOTOS ofrece: Sesiones lifestyle, Fotografía comercial, Engagement, Contratos mensuales, Experiencias curadas y gestión de Stays. ¿Cuál te llama más la atención?'],
-    experiencias: ['Las experiencias van desde un Picnic en la Playa ($8,000–$10,000 MXN) hasta una Cena Privada ($15,000–$20,000 MXN). Todo coordinado, con fotos incluidas 🌿 ¿Te cuento más de alguna?'],
-    stays: ['Para Stays ofrecemos Auditoría OTA, Setup de Cloudbeds y Operaciones Mensuales para propiedades en Sayulita y Puerto Vallarta. ¿Tienes una propiedad que quieras optimizar?'],
-  },
-  en: {
-    default: ["Sure! I can help with that. What kind of session do you have in mind?", "Happy to guide you. Is this for a business or personal use?"],
-    precio: ['Personal sessions start at $2,500 MXN (30 min / 10 photos). Commercial packages from $3,500 MXN. What do you need the photos for?'],
-    agendar: ["Great! To book, I just need: what type of session and what dates work for you?"],
-    servicios: ['OGPHOTOS offers: Lifestyle sessions, Commercial photography, Engagement, Monthly contracts, Curated experiences and Stays management. Which one catches your eye?'],
-    experiencias: ['Experiences range from a Beach Picnic ($8,000–$10,000 MXN) to a Private Dinner ($15,000–$20,000 MXN). All coordinated, with photos included 🌿'],
-    stays: ['For Stays we offer OTA Audits, Cloudbeds Setup and Monthly Operations for properties in Sayulita and Puerto Vallarta.'],
-  }
-};
-
+// Responses handled by Gemini API via Netlify Function
 function getLang() { return document.body.dataset.lang || 'es'; }
 
-function getReply(text) {
-  const lang = getLang();
-  const t = text.toLowerCase();
-  const r = responses[lang];
-  if (t.includes('precio') || t.includes('costo') || t.includes('cuanto') || t.includes('price') || t.includes('cost') || t.includes('cuánto')) return pick(r.precio);
-  if (t.includes('agenda') || t.includes('reserva') || t.includes('book')) return pick(r.agendar);
-  if (t.includes('servicio') || t.includes('servic')) return pick(r.servicios);
-  if (t.includes('experiencia') || t.includes('picnic') || t.includes('cena') || t.includes('experi')) return pick(r.experiencias);
-  if (t.includes('stay') || t.includes('hotel') || t.includes('hospedaje') || t.includes('property')) return pick(r.stays);
-  return pick(r.default);
-}
+// Conversation history for context
+const _botHistory = [];
 
-function pick(arr) { return arr[Math.floor(Math.random()*arr.length)]; }
+// Call real Gemini via Netlify Function
+async function getReply(text) {
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, history: _botHistory }),
+    });
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    // Save to history
+    _botHistory.push({ role: 'user', content: text });
+    _botHistory.push({ role: 'model', content: data.reply });
+    // Keep last 10 messages for context
+    if (_botHistory.length > 20) _botHistory.splice(0, 2);
+    return data.reply;
+  } catch (err) {
+    console.error('Chat error:', err);
+    const lang = getLang();
+    return lang === 'es'
+      ? 'Lo siento, hubo un problema. Contáctanos por WhatsApp: wa.me/523221699480'
+      : 'Sorry, there was an issue. Contact us on WhatsApp: wa.me/523221699480';
+  }
+}
 
 // ── Sticky bar bot ──
 let barOpen = false;
@@ -1606,26 +1067,24 @@ function toggleBar() {
   }
 }
 
-function botSend() {
+async function botSend() {
   const inp = document.getElementById('botInput');
   const val = inp.value.trim();
   if (!val) return;
   addBotMsg(val, true);
   inp.value = '';
   showBotTyping();
-  setTimeout(() => {
-    removeBotTyping();
-    addBotMsg(getReply(val));
-  }, 900 + Math.random()*700);
+  const reply = await getReply(val);
+  removeBotTyping();
+  addBotMsg(reply);
 }
 
-function botChip(text) {
+async function botChip(text) {
   addBotMsg(text, true);
   showBotTyping();
-  setTimeout(() => {
-    removeBotTyping();
-    addBotMsg(getReply(text));
-  }, 800 + Math.random()*500);
+  const reply = await getReply(text);
+  removeBotTyping();
+  addBotMsg(reply);
 }
 
 function addBotMsg(text, isUser=false) {
@@ -1655,6 +1114,34 @@ function removeBotTyping() {
 
 // Bot bar always visible — no scroll trigger needed
 
+// ── Properties: load from Netlify Function ──
+async function _loadProperties(params = {}) {
+  const grid = document.getElementById('bookGrid');
+  if (!grid) return;
+  try {
+    const qs = new URLSearchParams(params).toString();
+    const res = await fetch('/api/properties' + (qs ? '?' + qs : ''));
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    _bsRenderCards(data.properties);
+  } catch(err) {
+    console.warn('Properties fallback to static:', err);
+    if (typeof _bsProps !== 'undefined') _bsRenderCards(_bsProps);
+  }
+}
+
+async function bsSearch() {
+  const dest = document.getElementById('bsDest').value;
+  const guests = parseInt(document.getElementById('bsGuests').value) || 1;
+  const params = { guests };
+  if (dest) params.dest = dest;
+  await _loadProperties(params);
+}
+
+// Init: load properties on page load
+_loadProperties();
+
+
 const cur=document.getElementById('cur'),ring=document.getElementById('ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
@@ -1664,160 +1151,71 @@ document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// ── Parallax hero background ──
-const _heroBg = document.querySelector('.hero-bg img');
-window.addEventListener('scroll', () => {
-  const sy = window.scrollY;
-  if (sy < window.innerHeight * 1.2) {
-    _heroBg.style.transform = `translateY(${sy * 0.35}px)`;
-  }
-}, { passive: true });
+// ── Kaliva Villas: load from API ──
+const VILLA_IMAGES = {
+  24: 'https://kalivasayulita.com/wp-content/uploads/2026/03/Buena-Vida-Indoor-seating.jpg',
+  25: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80&fm=jpg&fit=crop',
+  26: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&q=80&fm=jpg&fit=crop',
+  27: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fm=jpg&fit=crop',
+  32: 'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600&q=80&fm=jpg&fit=crop',
+};
 
-// ── Counter animation ──
-function _animCount(el, target, suffix, dur) {
-  let t0 = null;
-  (function step(ts) {
-    if (!t0) t0 = ts;
-    const p = Math.min((ts - t0) / dur, 1);
-    const ease = 1 - Math.pow(1 - p, 3);
-    el.textContent = Math.floor(ease * target) + suffix;
-    if (p < 1) requestAnimationFrame(step);
-  })(performance.now());
-}
-const _cntObs = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.dataset.counted) {
-      entry.target.dataset.counted = '1';
-      const raw = entry.target.textContent.trim();
-      if (raw === '∞') return;
-      const m = raw.match(/^(\d+)(.*)$/);
-      if (m) _animCount(entry.target, parseInt(m[1]), m[2], 1600);
-    }
-  });
-}, { threshold: 0.6 });
-document.querySelectorAll('.hs-n, .an-n').forEach(el => _cntObs.observe(el));
-
-// ── Mobile nav ──
-function _closeMob() {
-  document.getElementById('mobNav').classList.remove('open');
-  document.getElementById('hamBtn').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('hamBtn').addEventListener('click', () => {
-  const isOpen = document.getElementById('mobNav').classList.contains('open');
-  isOpen ? _closeMob() : (() => {
-    document.getElementById('mobNav').classList.add('open');
-    document.getElementById('hamBtn').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  })();
-});
-
-// ── Scroll progress bar ──
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-  document.getElementById('scrollBar').style.width = pct + '%';
-}, { passive: true });
-
-// ── Cursor ring scale on hover ──
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.width = ring.style.height = '52px';
-    ring.style.borderColor = 'rgba(193,127,82,.55)';
-    ring.style.transition = 'width .2s,height .2s,border-color .2s,left .1s ease-out,top .1s ease-out';
-  });
-  el.addEventListener('mouseleave', () => {
-    ring.style.width = ring.style.height = '34px';
-    ring.style.borderColor = 'var(--moss)';
-    ring.style.transition = 'width .2s,height .2s,border-color .2s,left .1s ease-out,top .1s ease-out';
-  });
-});
-
-// ── Magnetic buttons ──
-document.querySelectorAll('.btn-j, .nav-book, .btn-cm, .btn-cg, .ig-cta, .mob-nav-book, .nav-logo').forEach(el => {
-  el.addEventListener('mousemove', e => {
-    const r = el.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width / 2) * 0.28;
-    const dy = (e.clientY - r.top - r.height / 2) * 0.28;
-    el.style.transform = `translate(${dx}px,${dy}px)`;
-  });
-  el.addEventListener('mouseleave', () => {
-    el.style.transition = 'transform .55s cubic-bezier(.16,1,.3,1)';
-    el.style.transform = '';
-    setTimeout(() => el.style.transition = '', 560);
-  });
-});
-
-// ── 3D tilt experience cards ──
-document.querySelectorAll('.exp-card').forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transition = 'transform .1s ease, background .3s, border-color .3s';
-  });
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - 0.5;
-    const y = (e.clientY - r.top) / r.height - 0.5;
-    card.style.transform = `perspective(900px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transition = 'transform .55s cubic-bezier(.16,1,.3,1), background .3s, border-color .3s';
-    card.style.transform = '';
-    setTimeout(() => card.style.transition = '', 560);
-  });
-});
-
-// ── Book Stays — mock data & render ──
-const _bsProps = [
-  { id:1, name:'Casa Selva', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=600&q=80&fm=jpg&fit=crop', price:2800, rating:4.9, reviews:38, guests:6, tags:['Alberca','Vista selva','AC'], badge:'Disponible' },
-  { id:2, name:'Palapa Marinero', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&q=80&fm=jpg&fit=crop', price:1900, rating:4.7, reviews:52, guests:2, tags:['Frente al mar','Desayuno incl.'], badge:'Popular' },
-  { id:3, name:'Suite Pacífico', loc:'Puerto Vallarta', dest:'pv', img:'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80&fm=jpg&fit=crop', price:3500, rating:4.8, reviews:91, guests:4, tags:['Hotel boutique','Terraza','Spa'], badge:'Top rated' },
-  { id:4, name:'Villa Nayarit', loc:'Punta Mita', dest:'punta-mita', img:'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80&fm=jpg&fit=crop', price:5200, rating:5.0, reviews:14, guests:8, tags:['Exclusiva','Chef privado','Playa privada'], badge:'Premium' },
-  { id:5, name:'Casa Colibrí', loc:'Sayulita', dest:'sayulita', img:'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80&fm=jpg&fit=crop', price:2200, rating:4.6, reviews:73, guests:5, tags:['Jardín tropical','Cocina completa'], badge:null },
-  { id:6, name:'Penthouse Mar Azul', loc:'Puerto Vallarta', dest:'pv', img:'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80&fm=jpg&fit=crop', price:4100, rating:4.9, reviews:29, guests:4, tags:['Vista al mar','Rooftop','Gym'], badge:'Nuevo' }
-];
-
-function _bsRenderCards(props) {
-  const grid = document.getElementById('bookGrid');
-  if (!props.length) {
-    grid.innerHTML = '<div class="book-empty"><p>Sin propiedades para esa búsqueda.</p></div>';
+function _renderKalivaCards(items) {
+  const grid = document.getElementById('kalivaGrid');
+  if (!grid) return;
+  if (!items || items.length === 0) {
+    grid.innerHTML = '<div class="kaliva-loading"><p style="color:#8A9080;font-family:Fraunces,serif;font-size:18px;font-style:italic">Sin villas disponibles por el momento</p></div>';
     return;
   }
-  grid.innerHTML = props.map(p => `
-    <div class="book-card rv">
-      <div class="book-card-img">
-        <img src="${p.img}" alt="${p.name}" loading="lazy"/>
-        ${p.badge ? `<span class="book-card-badge">${p.badge}</span>` : ''}
-        <div class="book-card-fav"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+  const lang = getLang();
+  grid.innerHTML = items.map(villa => {
+    const img = villa.image || VILLA_IMAGES[villa.id] || 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80&fm=jpg&fit=crop';
+    const waMsg = encodeURIComponent(
+      (lang === 'es'
+        ? 'Hola! Me interesa reservar ' + villa.name + ' en Kaliva Sayulita. ¿Pueden darme más información?'
+        : 'Hi! I am interested in booking ' + villa.name + ' at Kaliva Sayulita. Can you give me more info?')
+      + ' | REF:OGPHOTOS'
+    );
+    return `
+    <div class="kaliva-card rv">
+      <div class="kaliva-card-img">
+        <img src="${img}" alt="${villa.name}" loading="lazy"/>
+        <span class="kaliva-card-badge">Sayulita, Nayarit</span>
+        <span class="kaliva-card-ref">REF:OGPHOTOS</span>
       </div>
-      <div class="book-card-body">
-        <div class="book-card-loc">${p.loc} · ${p.guests} <span class="es">huéspedes</span><span class="en">guests</span></div>
-        <div class="book-card-name">${p.name}</div>
-        <div class="book-card-tags">${p.tags.map(t => `<span class="book-card-tag">${t}</span>`).join('')}</div>
-        <div class="book-card-footer">
-          <div>
-            <div class="book-card-price-n">$${p.price.toLocaleString()}</div>
-            <div class="book-card-price-l">MXN / <span class="es">noche</span><span class="en">night</span></div>
-          </div>
-          <div class="book-card-rating"><span class="book-card-star">★</span> ${p.rating} <span style="font-weight:400;color:#8A9080;font-size:11px">(${p.reviews})</span></div>
-        </div>
-        <a href="https://wa.me/523221699480?text=${encodeURIComponent('Hola! Me interesa ' + p.name + ' en ' + p.loc + '. ¿Está disponible?')}" class="book-card-cta" target="_blank">
+      <div class="kaliva-card-body">
+        <div class="kaliva-card-loc">Kaliva Sayulita</div>
+        <div class="kaliva-card-name">${villa.name}</div>
+        <div class="kaliva-card-desc">${villa.description}</div>
+        <a href="https://wa.me/523221699480?text=${waMsg}" class="kaliva-card-cta" target="_blank">
           <span class="es">Consultar disponibilidad</span><span class="en">Check availability</span> →
         </a>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
   grid.querySelectorAll('.rv').forEach(el => obs.observe(el));
 }
 
-function bsSearch() {
-  const dest = document.getElementById('bsDest').value;
-  const guests = parseInt(document.getElementById('bsGuests').value) || 1;
-  let filtered = _bsProps;
-  if (dest) filtered = filtered.filter(p => p.dest === dest);
-  filtered = filtered.filter(p => p.guests >= guests);
-  _bsRenderCards(filtered);
+async function _loadKalivaVillas() {
+  try {
+    const res = await fetch('/.netlify/functions/kaliva?action=inventory');
+    if (!res.ok) throw new Error('API error');
+    const data = await res.json();
+    _renderKalivaCards(data.items);
+  } catch(err) {
+    console.warn('Kaliva fallback:', err);
+    // Static fallback
+    _renderKalivaCards([
+      { id: 24, name: 'Casa Buena Vida',  description: 'Villa con vista en Sayulita. El espacio perfecto para una estancia memorable.' },
+      { id: 25, name: 'Hora Feliz',       description: 'Studio acogedor en Kaliva Sayulita. Diseño moderno con todo lo necesario.' },
+      { id: 26, name: 'El Desvan',        description: 'Loft con diseño único y vistas privilegiadas en Sayulita.' },
+      { id: 27, name: 'El Nuevo Dias',    description: 'Villa completa con todas las amenidades para una estancia de lujo.' },
+      { id: 32, name: 'Villas at Kaliva', description: 'Complejo de villas exclusivas en Sayulita. Privacidad y naturaleza.' },
+    ]);
+  }
 }
+_loadKalivaVillas();
 
-_bsRenderCards(_bsProps);
 </script>
 </body>
 </html>
