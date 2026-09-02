@@ -617,6 +617,184 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 @media(max-width:1024px){.kaliva{padding:80px 40px;}.kaliva-grid{grid-template-columns:repeat(2,1fr);}.kaliva-top{grid-template-columns:1fr;}}
 @media(max-width:768px){.kaliva{padding:72px 24px;}.kaliva-grid{grid-template-columns:1fr;}}
 
+/* ── REFERENCE HERO ── */
+.hero-reference{min-height:100svh;height:100svh;padding:0;display:block;background:#15231f;position:relative;isolation:isolate;overflow:hidden;}
+.hero-reference .hero-bg{inset:0;}
+.hero-reference .hero-bg img{opacity:.72;object-position:calc(50% + var(--hero-x,0px)) calc(55% + var(--hero-y,0px));filter:saturate(.7) contrast(1.05);animation:heroKenBurns 18s ease-in-out infinite alternate;transition:object-position .7s ease;}
+.hero-reference .hero-bg::after{background:linear-gradient(180deg,rgba(15,28,25,.48),rgba(12,27,23,.08) 38%,rgba(7,19,17,.82));}
+.hero-reference .hero-wash{background:linear-gradient(90deg,rgba(11,29,24,.55),transparent 38%,rgba(10,22,19,.28)),radial-gradient(ellipse at 50% 55%,transparent 0%,rgba(8,20,17,.35) 100%);z-index:1;}
+@keyframes heroKenBurns{from{transform:scale(1);}to{transform:scale(1.06);}}
+.hero-reference nav{}
+.hero-reference .nav-logo{font-family:'Fraunces',serif;font-size:11px;letter-spacing:.22em;}
+.hero-reference .nav-links{gap:27px;}
+.hero-reference .nav-links a{font-size:9px;color:rgba(250,247,240,.62);letter-spacing:.18em;}
+.hero-reference .nav-book{background:transparent;border:1px solid rgba(250,247,240,.28);padding:9px 18px;font-size:9px;}
+.hero-reference .nav-book:hover{background:rgba(143,181,154,.16);border-color:rgba(143,181,154,.55);}
+.hero-frame{position:absolute;inset:0;z-index:3;padding:clamp(88px,10vh,112px) clamp(20px,4vw,64px) clamp(26px,5vh,52px);display:grid;grid-template-columns:minmax(220px,1fr) minmax(270px,1fr);grid-template-rows:1fr auto;gap:24px;pointer-events:none;}
+.hero-panel{pointer-events:auto;background:rgba(14,25,22,.72);border:1px solid rgba(196,214,194,.17);border-radius:9px;backdrop-filter:blur(13px);box-shadow:0 15px 50px rgba(0,0,0,.15);}
+.hero-services{align-self:center;max-width:300px;padding:30px 26px 25px;}
+.hero-kicker{display:flex;align-items:center;gap:10px;color:var(--sage);font-size:9px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:25px;}
+.hero-kicker::before{content:'';width:21px;height:1px;background:var(--sage);}
+.hero-service-list{list-style:none;display:flex;flex-direction:column;}
+.hero-service-list a{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid rgba(250,247,240,.1);color:rgba(250,247,240,.8);font-family:Fraunces,serif;font-size:18px;font-weight:200;text-decoration:none;transition:color .2s,padding-left .2s;}
+.hero-service-list a:last-child{border-bottom:0;}
+.hero-service-list a:hover{color:var(--sage);padding-left:7px;}
+.hero-service-icon{width:20px;height:20px;color:var(--sage);flex-shrink:0;opacity:.85;}
+.hero-service-arrow{margin-left:auto;color:var(--sage);font-family:Syne,sans-serif;font-size:13px;}
+.hero-services-more{display:inline-block;margin-top:18px;color:rgba(143,181,154,.65);font-size:8px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;}
+.hero-message{align-self:center;justify-self:end;max-width:360px;padding:35px 31px 30px;}
+.hero-message .hero-kicker{margin-bottom:22px;}
+.hero-message h1{font-family:Fraunces,serif;color:var(--bone);font-size:clamp(34px,4vw,54px);font-weight:200;line-height:.98;margin-bottom:20px;}
+.hero-message h1 em{font-style:italic;color:var(--sage);}
+.hero-message p{font-size:12px;line-height:1.7;color:rgba(250,247,240,.57);margin-bottom:22px;}
+.hero-message-terms{font-size:9px!important;color:rgba(143,181,154,.65)!important;margin-bottom:20px!important;}
+.hero-message-cta{display:flex;align-items:center;justify-content:space-between;border:1px solid rgba(143,181,154,.4);padding:13px 15px;color:var(--sage);font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,color .2s;}
+.hero-message-cta:hover{background:rgba(92,140,101,.2);color:var(--bone);}
+.hero-center-mark{position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);text-align:center;color:var(--bone);pointer-events:none;text-shadow:0 2px 22px rgba(0,0,0,.25);}
+.hero-center-mark strong{display:block;font-family:Fraunces,serif;font-size:clamp(72px,10vw,144px);font-weight:200;letter-spacing:-.09em;line-height:.75;}
+.hero-center-mark span{display:block;margin-top:25px;font-size:9px;letter-spacing:.42em;color:rgba(250,247,240,.7);}
+.hero-center-mark small{display:block;margin-top:11px;font-size:8px;letter-spacing:.25em;color:rgba(143,181,154,.62);}
+.hero-bottom-meta{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;color:rgba(250,247,240,.55);font-size:8px;letter-spacing:.2em;text-transform:uppercase;}
+.hero-bottom-meta span{display:flex;align-items:center;gap:9px;}
+.hero-bottom-meta .live-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(143,181,154,.14);}
+.hero-video-label{display:flex;align-items:center;gap:8px;}
+.hero-video-label::before{content:'Ⅱ';display:grid;place-items:center;width:18px;height:18px;border:1px solid rgba(250,247,240,.5);border-radius:50%;font-size:8px;}
+@media(max-width:768px){
+  .hero-reference{min-height:760px;height:100svh;}
+  .hero-frame{padding:83px 16px 18px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;}
+  .hero-services{align-self:stretch;max-width:none;padding:15px 18px 12px;order:2;}
+  .hero-services .hero-kicker{margin-bottom:5px;}
+  .hero-service-list{display:grid;grid-template-columns:1fr 1fr;column-gap:18px;}
+  .hero-service-list a{font-size:15px;padding:9px 0;}
+  .hero-service-list a:nth-child(odd){border-bottom:1px solid rgba(250,247,240,.1);}
+  .hero-services-more{display:none;}
+  .hero-message{align-self:stretch;max-width:none;padding:20px 20px 18px;order:1;}
+  .hero-message .hero-kicker{margin-bottom:10px;}
+  .hero-message h1{font-size:34px;margin-bottom:10px;max-width:300px;}
+  .hero-message p{margin-bottom:12px;max-width:330px;}
+  .hero-message-terms{display:none;}
+  .hero-center-mark{top:35%;}
+  .hero-center-mark strong{font-size:86px;}
+  .hero-center-mark span{margin-top:18px;font-size:7px;}
+  .hero-bottom-meta{order:3;padding:0 3px;}
+  .hero-bottom-meta .hero-video-label{display:none;}
+}
+
+/* ── REFERENCE VISUAL SYSTEM ── */
+body{background:#07100d;color:var(--bone);}
+.mq{background:#0b1712;border-color:rgba(143,181,154,.12);}
+.mq-item{color:rgba(143,181,154,.55);}
+.about,.services,.stays,.pricing,.ig-section,.kaliva{background:#07100d;color:var(--bone);}
+.about{grid-template-columns:1fr 1fr;min-height:76vh;gap:1px;background:rgba(143,181,154,.12);}
+.about-l,.about-r{background:#0b1712;border:1px solid rgba(143,181,154,.1);}
+.about-l{padding:78px 64px;}
+.about-r{padding:78px 64px;}
+.about-body,.body{color:rgba(250,247,240,.55);}
+.h2{color:var(--bone);}
+.h2 em{color:var(--sage);}
+.pillars{background:rgba(143,181,154,.12);}
+.pillar{background:#101e17;color:var(--bone);}
+.pillar:hover{background:#16271e;}
+.pillar p{color:rgba(250,247,240,.58);}
+.pillar p strong{color:var(--bone);}
+.services,.stays,.pricing,.ig-section,.kaliva{padding-top:96px;padding-bottom:96px;}
+.svc-top,.pricing-top,.kaliva-top{margin-bottom:48px;}
+.svc-list{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;background:transparent;}
+.svc{min-height:326px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;position:relative;padding:24px 18px 18px;border:1px solid rgba(143,181,154,.16);border-radius:6px;background:#101b16;overflow:hidden;transition:transform .25s,border-color .25s,background .25s;}
+.svc::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,15,11,.04),rgba(5,15,11,.18) 35%,rgba(5,15,11,.96) 83%);z-index:1;}
+.svc::after{content:'';position:absolute;inset:0;background-position:center;background-size:cover;opacity:.52;z-index:0;transition:transform .5s,opacity .3s;}
+.svc:nth-child(1)::after{background-image:url('https://images.unsplash.com/photo-1531058020387-3be344556be6?w=700&q=80&fm=jpg&fit=crop');}
+.svc:nth-child(2)::after{background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=700&q=80&fm=jpg&fit=crop');}
+.svc:nth-child(3)::after{background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80&fm=jpg&fit=crop');}
+.svc:nth-child(4)::after{background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=700&q=80&fm=jpg&fit=crop');}
+.svc:nth-child(5)::after{background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=700&q=80&fm=jpg&fit=crop');}
+.svc:hover{background:#13271c;transform:translateY(-5px);border-color:rgba(143,181,154,.42);}
+.svc:hover::after{transform:scale(1.06);opacity:.68;}
+.svc-num{position:absolute;top:17px;left:17px;z-index:2;border:0;padding:0;color:rgba(143,181,154,.85);font-family:Syne,sans-serif;font-size:9px;}
+.svc-body{position:relative;z-index:2;padding:0;gap:7px;}
+.svc-name{font-size:21px;color:var(--bone);line-height:1.04;}
+.svc-sub{font-size:10px;color:rgba(250,247,240,.55);line-height:1.35;}
+.svc-r{position:relative;z-index:2;padding:18px 0 0;display:grid;grid-template-columns:1fr auto;align-items:end;gap:9px;}
+.svc-price{font-family:Fraunces,serif;font-size:15px;color:var(--bone);}
+.svc-tag{grid-column:1/2;grid-row:1;font-size:8px;background:transparent;color:rgba(143,181,154,.7);padding:0;}
+.svc-arrow{grid-column:2;grid-row:1;color:var(--sage);font-size:16px;}
+.exp{background:#07100d;}
+.stays-inner{grid-template-columns:1fr 1.15fr;gap:58px;}
+.stays-cards{background:rgba(143,181,154,.12);}
+.stay-card{background:#101b16;border:1px solid rgba(143,181,154,.08);padding:24px 26px;}
+.stay-card:hover{background:#16271e;}
+.stay-name{color:var(--bone);}
+.stay-desc{color:rgba(250,247,240,.48);}
+.stay-badge{background:rgba(143,181,154,.1);color:var(--sage);}
+.pricing-top .body{color:rgba(250,247,240,.55);}
+.p-grid,.t-grid{gap:10px;background:transparent;}
+.p-card{background:#101b16;border:1px solid rgba(143,181,154,.14);border-radius:6px;}
+.p-card:hover{background:#14241b;}
+.p-card.hot{background:#183326;border-color:rgba(143,181,154,.35);}
+.p-name,.p-amount{color:var(--bone);}
+.p-unit,.p-feats li{color:rgba(250,247,240,.55);}
+.p-div{background:rgba(143,181,154,.14);}
+.p-btn{border-color:rgba(143,181,154,.25);color:var(--sage);}
+.p-btn:hover{background:var(--leaf);border-color:var(--leaf);}
+.testi{background:#0b1712;padding-top:96px;padding-bottom:96px;}
+.t-card{background:#101e17;border:1px solid rgba(143,181,154,.12);border-radius:6px;}
+.t-card:hover{background:#16271e;}
+.cta{background:#183326;}
+.ig-section{border-top:1px solid rgba(143,181,154,.1);}
+.kaliva{border-top:1px solid rgba(143,181,154,.1);}
+.kaliva-grid{gap:10px;background:transparent;}
+.kaliva-card{background:#101b16;border:1px solid rgba(143,181,154,.14);border-radius:6px;}
+.kaliva-card-body{background:#101b16;}
+.kaliva-card-name{color:var(--bone);}
+.kaliva-card-desc,.kaliva-ref-note{color:rgba(250,247,240,.5);}
+@media(max-width:1100px){.svc-list{grid-template-columns:repeat(3,1fr);}.about-l,.about-r{padding:64px 40px;}}
+@media(max-width:768px){
+  .about{grid-template-columns:1fr;}
+  .about-l,.about-r{padding:58px 24px;}
+  .svc-list{grid-template-columns:1fr 1fr;gap:8px;}
+  .svc{min-height:270px;padding:20px 15px 16px;}
+  .svc-name{font-size:18px;}
+  .stays-inner{grid-template-columns:1fr;gap:30px;}
+  .stays-vis{position:relative;top:auto;}
+}
+
+/* ── NEW REFERENCE MODULES ── */
+.personal-section{display:grid;grid-template-columns:minmax(280px,.82fr) 1.18fr;gap:0;background:#0b1712;padding:0 64px;border-top:1px solid rgba(143,181,154,.12);}
+.personal-photo{min-height:660px;background:#14221b;position:relative;overflow:hidden;}
+.personal-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) contrast(1.05);opacity:.78;display:block;}
+.personal-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,16,13,.05),rgba(7,16,13,.35));}
+.personal-photo img{transition:transform 1s cubic-bezier(.2,.7,.2,1);}
+.personal-photo:hover img{transform:scale(1.045);}
+.personal-photo-label{position:absolute;z-index:1;bottom:24px;left:22px;writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px;letter-spacing:.25em;color:rgba(250,247,240,.62);text-transform:uppercase;}
+.personal-copy{padding:92px 7vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(143,181,154,.12);}
+.personal-copy h2{font-family:Fraunces,serif;font-size:clamp(42px,5vw,70px);font-weight:200;line-height:.95;color:var(--bone);margin-bottom:26px;}
+.personal-copy h2 em{color:var(--sage);font-style:italic;}
+.personal-copy p{max-width:420px;color:rgba(250,247,240,.56);font-size:13px;line-height:1.8;margin-bottom:17px;}
+.personal-name{font-family:Fraunces,serif;font-size:27px;font-style:italic;color:var(--bone);margin-top:18px;}
+.personal-signature{color:var(--sage);font-family:Fraunces,serif;font-size:23px;font-style:italic;margin-top:14px;}
+.stay-intro{max-width:520px;margin-bottom:35px;}
+.stay-types{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 0 55px;}
+.stay-type{min-height:220px;border:1px solid rgba(143,181,154,.18);border-radius:6px;overflow:hidden;position:relative;padding:22px;display:flex;align-items:flex-end;background:#101b16;}
+.stay-type::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,11,.93),rgba(5,15,11,.1));z-index:0;}
+.stay-type::after{content:'';position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;opacity:.7;transition:transform .5s;}
+.stay-type:nth-child(1)::after{background-image:url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&q=80&fm=jpg&fit=crop');}
+.stay-type:nth-child(2)::after{background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&fm=jpg&fit=crop');}
+.stay-type:nth-child(3)::after{background-image:url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80&fm=jpg&fit=crop');}
+.stay-type:hover::after{transform:scale(1.06);}
+.stay-type-content{position:relative;z-index:1;}
+.stay-type h3{font-family:Fraunces,serif;font-size:25px;font-weight:200;line-height:1;color:var(--bone);margin-bottom:8px;}
+.stay-type h3 em{color:var(--sage);font-style:italic;}
+.stay-type p{font-size:10px;line-height:1.55;color:rgba(250,247,240,.58);max-width:190px;}
+.availability-panel{display:grid;grid-template-columns:1fr 1.4fr;gap:42px;align-items:center;margin-top:70px;padding:38px 0;border-top:1px solid rgba(143,181,154,.14);}
+.availability-panel h3{font-family:Fraunces,serif;font-size:35px;font-weight:200;line-height:1;color:var(--bone);}
+.availability-panel h3 em{color:var(--sage);}
+.availability-form{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:8px;align-items:end;}
+.availability-field{display:flex;flex-direction:column;gap:7px;}
+.availability-field label{font-size:8px;letter-spacing:.15em;text-transform:uppercase;color:rgba(143,181,154,.7);}
+.availability-field input,.availability-field select{min-width:0;width:100%;border:1px solid rgba(143,181,154,.2);background:#101b16;color:var(--bone);border-radius:4px;padding:12px 10px;font:11px Syne,sans-serif;}
+.availability-btn{border:0;border-radius:4px;background:var(--leaf);color:var(--bone);padding:13px 17px;white-space:nowrap;font:9px Syne,sans-serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;}
+@media(max-width:900px){.personal-section{grid-template-columns:1fr;padding:0;}.personal-photo{min-height:480px;}.personal-copy{padding:64px 24px;border-right:0;}.stay-types{grid-template-columns:1fr;}.stay-type{min-height:180px;}.availability-panel{grid-template-columns:1fr;gap:24px;}.availability-form{grid-template-columns:1fr 1fr;}.availability-btn{grid-column:1/-1;}}
+
 </style>
 </head>
 <body data-lang="es">
@@ -626,12 +804,14 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo">OGPHOTOS</a>
+  <a href="#" class="nav-logo">OG · CREATIVE &amp; EXPERIENCES</a>
   <div class="nav-r">
     <ul class="nav-links">
-      <li><a href="#servicios"><span class="es">Servicios</span><span class="en">Services</span></a></li>
+      <li><a href="#servicios">Visual</a></li>
       <li><a href="#stays">Stays</a></li>
-      <li><a href="#precios"><span class="es">Precios</span><span class="en">Pricing</span></a></li>
+      <li><a href="#experiencias"><span class="es">Experiencias</span><span class="en">Experiences</span></a></li>
+      <li><a href="#guia-local"><span class="es">Guía local</span><span class="en">Local guide</span></a></li>
+      <li><a href="#nosotros">Journal</a></li>
     </ul>
     <div class="lang-toggle">
       <button class="lang-btn active" data-l="es">ES</button>
@@ -644,49 +824,38 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-reference">
   <div class="hero-bg"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=75&fm=jpg&fit=crop&crop=entropy" alt="" loading="eager"/></div>
-  <svg class="hero-botanical" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <path d="M700 900 Q640 680 480 580 Q320 480 150 370 Q80 320 0 270" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
-    <path d="M700 900 Q760 680 920 560 Q1080 440 1240 330 Q1320 280 1400 230" stroke="#5C8C65" stroke-width="1.4" fill="none"/>
-    <path d="M480 580 Q455 535 395 508 Q335 481 270 450" stroke="#5C8C65" stroke-width=".75" fill="none"/>
-    <path d="M480 580 Q515 548 548 508 Q581 468 572 428" stroke="#5C8C65" stroke-width=".75" fill="none"/>
-    <path d="M920 560 Q944 528 996 500 Q1048 472 1082 432" stroke="#5C8C65" stroke-width=".75" fill="none"/>
-    <path d="M920 560 Q888 528 856 498 Q824 468 836 430" stroke="#5C8C65" stroke-width=".75" fill="none"/>
-    <ellipse cx="190" cy="140" rx="110" ry="55" stroke="#3D6B50" stroke-width=".7" fill="none" transform="rotate(-28 190 140)"/>
-    <ellipse cx="1210" cy="195" rx="130" ry="62" stroke="#3D6B50" stroke-width=".7" fill="none" transform="rotate(22 1210 195)"/>
-    <circle cx="480" cy="580" r="4" fill="#5C8C65" opacity=".35"/>
-    <circle cx="920" cy="560" r="4" fill="#5C8C65" opacity=".35"/>
-  </svg>
   <div class="hero-wash"></div>
-  <div class="hero-content">
-    <div class="hero-tag">
-      <div class="hero-dot"></div>
-      <span class="es">Sayulita · Puerto Vallarta · Disponible</span>
-      <span class="en">Sayulita · Puerto Vallarta · Available</span>
+  <div class="hero-center-mark" aria-label="OG Creative and Experiences">
+    <strong>OG</strong>
+    <span>CREATIVE &amp; EXPERIENCES</span>
+    <small>SAYULITA · MÉXICO</small>
+  </div>
+  <div class="hero-frame">
+    <div class="hero-panel hero-services">
+      <p class="hero-kicker"><span class="es">Servicios</span><span class="en">Services</span></p>
+      <ul class="hero-service-list">
+        <li><a href="#servicios"><span class="hero-service-icon">▣</span><span class="es">Creación de contenido</span><span class="en">Content creation</span><span class="hero-service-arrow">→</span></a></li>
+        <li><a href="#stays"><span class="hero-service-icon">▤</span><span>Stays</span><span class="hero-service-arrow">→</span></a></li>
+        <li><a href="#stays"><span class="hero-service-icon">◎</span><span class="es">Viajes</span><span class="en">Travel</span><span class="hero-service-arrow">→</span></a></li>
+        <li><a href="#experiencias"><span class="hero-service-icon">✳</span><span class="es">Experiencias</span><span class="en">Experiences</span><span class="hero-service-arrow">→</span></a></li>
+        <li><a href="#servicios"><span class="hero-service-icon">◌</span><span>Lifestyle</span><span class="hero-service-arrow">→</span></a></li>
+      </ul>
+      <a class="hero-services-more" href="#servicios"><span class="es">Ver todos los servicios</span><span class="en">View all services</span> →</a>
     </div>
-    <h1 class="hero-title">
-      <span class="outline"><span class="es">Momentos</span><span class="en">Moments</span></span>
-      <em><span class="es">que quedan</span><span class="en">that last</span></em>
-      <span><span class="es">para siempre</span><span class="en">forever</span></span>
-    </h1>
-    <div class="hero-bottom">
-      <p class="hero-desc">
-        <span class="es">Sesiones de fotografía y servicios para propiedades en la costa del Pacífico mexicano.</span>
-        <span class="en">Photography sessions and property services on Mexico's Pacific coast.</span>
-      </p>
-      <div class="hero-acts">
-        <a href="#servicios" class="btn-j"><span class="es">Explorar servicios</span><span class="en">Explore services</span> →</a>
-        <a href="https://ogphothos.pixieset.com/booking/" class="btn-ghost" target="_blank"><span class="es">Agendar ahora</span><span class="en">Book now</span> ↗</a>
-      </div>
+    <div class="hero-panel hero-message">
+      <p class="hero-kicker"><span class="es">Experiencias reales</span><span class="en">Real experiences</span></p>
+      <h1><span class="es">Vive la experiencia atravesada <em>por nuestros visuales.</em></span><span class="en">Live the experience through <em>our visuals.</em></span></h1>
+      <p><span class="es">algo que parece real.</span><span class="en">something that feels real.</span><br><span class="es">Creación de contenido · hospedajes · viajes · experiencias · lifestyle.</span><span class="en">Content creation · stays · travel · experiences · lifestyle.</span></p>
+      <p class="hero-message-terms"><span class="es">Sayulita · Puerto Vallarta · Disponible</span><span class="en">Sayulita · Puerto Vallarta · Available</span></p>
+      <a class="hero-message-cta" href="#nosotros"><span class="es">Conoce OG</span><span class="en">Discover OG</span><span>→</span></a>
+    </div>
+    <div class="hero-bottom-meta">
+      <span class="hero-video-label"><span class="es">OG reel · visual stories</span><span class="en">OG reel · visual stories</span></span>
+      <span><i class="live-dot"></i><span class="es">Síguenos en Instagram</span><span class="en">Follow us on Instagram</span> &nbsp;◎</span>
     </div>
   </div>
-  <div class="hero-stats">
-    <div><div class="hs-n">200+</div><div class="hs-l"><span class="es">Clientes</span><span class="en">Clients</span></div></div>
-    <div><div class="hs-n">5</div><div class="hs-l"><span class="es">Servicios</span><span class="en">Services</span></div></div>
-    <div><div class="hs-n">100%</div><div class="hs-l"><span class="es">Personal</span><span class="en">Custom</span></div></div>
-  </div>
-  <div class="hero-scroll"><span class="es">Desliza</span><span class="en">Scroll</span></div>
 </section>
 
 <!-- ═══════════════════════ STICKY BAR BOT ═══════════════════════ -->
@@ -752,7 +921,6 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 
   </div>
 </div>
-</section>
 
 <!-- MARQUEE -->
 <div class="mq">
@@ -776,8 +944,24 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
   </div>
 </div>
 
+<!-- PERSONAL / LOCAL GUIDE -->
+<section class="personal-section" id="guia-local">
+  <div class="personal-photo">
+    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1000&q=85&fm=jpg&fit=crop" alt="Fotógrafo de OG con su cámara" loading="lazy">
+    <span class="personal-photo-label">Sayulita · México</span>
+  </div>
+  <div class="personal-copy">
+    <p class="eyebrow"><span class="es">La persona detrás de OG</span><span class="en">The person behind OG</span></p>
+    <h2><span class="es">Creative <em>Guide</em><br>to Sayulita</span><span class="en">Creative <em>Guide</em><br>to Sayulita</span></h2>
+    <p><span class="es">Soy Oswaldo, fotógrafo, creador y guía local. Sayulita no es solo el lugar donde vivo: es la inspiración diaria que atraviesa cada proyecto.</span><span class="en">I'm Oswaldo, photographer, creator and local guide. Sayulita isn't just where I live: it's the daily inspiration behind every project.</span></p>
+    <p><span class="es">Conozco cada rincón, cada historia y cada persona que hace de este pueblo algo único. Mi misión es mostrar lo real y crear experiencias memorables.</span><span class="en">I know every corner, story and person that makes this town unique. My mission is to show the real and create memorable experiences.</span></p>
+    <span class="personal-name">Oswaldo</span>
+    <span class="personal-signature">OG</span>
+  </div>
+</section>
+
 <!-- ABOUT -->
-<section class="about">
+<section class="about" id="nosotros">
   <div class="about-l">
     <div>
       <p class="eyebrow"><span class="es">Nuestra esencia</span><span class="en">Our essence</span></p>
@@ -821,24 +1005,34 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
 </section>
 
 <!-- EXPERIENCES -->
-<section class="exp" id="experiencias" hidden>
+<section class="exp" id="experiencias">
   <div class="exp-header">
     <div>
       <p class="eyebrow" style="color:rgba(143,181,154,.45);"><span class="es">Más que fotos</span><span class="en">More than photos</span></p>
-      <h2 class="h2 h2-lt"><span class="es">Experiencias<br><em>curadas</em><br>en Sayulita</span><span class="en">Curated<br><em>experiences</em><br>in Sayulita</span></h2>
+        <h2 class="h2 h2-lt"><span class="es">Sesiones<br><em>fotográficas</em></span><span class="en">Photography<br><em>sessions</em></span></h2>
     </div>
-    <p class="body body-lt"><span class="es">Una experiencia guiada donde las fotos son el recuerdo, no el centro. Nosotros planificamos todo: lugar, proveedores, ambiente.</span><span class="en">A guided experience where photos are the memory, not the focus. We plan everything: location, vendors, atmosphere.</span></p>
+    <p class="body body-lt"><span class="es">Elige la sesión que mejor se adapte a lo que quieres crear. Cada experiencia está diseñada para capturar lo que parece real.</span><span class="en">Choose the session that best fits what you want to create. Every experience is designed to capture what feels real.</span></p>
   </div>
   <div class="exp-grid">
-    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">01</div><p class="exp-label"><span class="es">Base · 2–3h</span><span class="en">Base · 2–3h</span></p><h3 class="exp-name"><span class="es">Picnic en <em>la Playa</em></span><span class="en">Beach <em>Picnic</em></span></h3><p class="exp-desc"><span class="es">Montaje curado, luz dorada y acompañamiento fotográfico. 25–30 fotos editadas incluidas.</span><span class="en">Curated setup, golden light and photographic accompaniment. 25–30 edited photos included.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">— $10,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">02</div><p class="exp-label"><span class="es">Premium · 4–5h</span><span class="en">Premium · 4–5h</span></p><h3 class="exp-name"><span class="es">Cena <em>Privada</em></span><span class="en">Private <em>Dinner</em></span></h3><p class="exp-desc"><span class="es">Mesa privada con decoración especial, coordinación de proveedores y cobertura completa. Video opcional.</span><span class="en">Private table with special decoration, vendor coordination and full coverage. Optional video.</span></p><div class="exp-price-row"><span class="exp-price">$15,000</span><span class="exp-price-l">— $20,000 MXN</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">03</div><p class="exp-label"><span class="es">Experiencia</span><span class="en">Experience</span></p><h3 class="exp-name"><span class="es">Cabalgata <em>al Atardecer</em></span><span class="en">Sunset <em>Horseback</em></span></h3><p class="exp-desc"><span class="es">Costa y naturaleza. Coordinamos proveedor, ruta y el acompañamiento fotográfico completo.</span><span class="en">Coast and nature. We coordinate the provider, route and full photographic accompaniment.</span></p><div class="exp-price-row"><span class="exp-price">$8,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
-    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">04</div><p class="exp-label"><span class="es">Gastronomía</span><span class="en">Gastronomy</span></p><h3 class="exp-name"><span class="es">Ruta <em>Gastronómica</em></span><span class="en">Gastronomic <em>Route</em></span></h3><p class="exp-desc"><span class="es">Los mejores sabores de Sayulita y PV con cámara en mano. Alianzas locales y guía incluida.</span><span class="en">The best flavors of Sayulita and PV with camera in hand. Local partnerships and guide included.</span></p><div class="exp-price-row"><span class="exp-price">$10,000</span><span class="exp-price-l">MXN+</span></div><a href="#contacto" class="exp-cta"><span class="es">Consultar</span><span class="en">Inquire</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">01</div><p class="exp-label"><span class="es">Full · 2 horas</span><span class="en">Full · 2 hours</span></p><h3 class="exp-name"><span class="es">Sesión <em>Esencial</em></span><span class="en">Essential <em>Session</em></span></h3><p class="exp-desc"><span class="es">Ideal para capturar momentos importantes con sencillez y autenticidad.</span><span class="en">Ideal for capturing important moments with simplicity and authenticity.</span></p><div class="exp-price-row"><span class="exp-price">$2,500</span><span class="exp-price-l">MXN</span></div><a href="https://ogphothos.pixieset.com/booking/" target="_blank" class="exp-cta"><span class="es">Reservar ahora</span><span class="en">Book now</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">02</div><p class="exp-label"><span class="es">Premium · 3 horas</span><span class="en">Premium · 3 hours</span></p><h3 class="exp-name"><span class="es">Sesión Personal <em>Premium</em></span><span class="en">Personal <em>Premium</em></span></h3><p class="exp-desc"><span class="es">Para quienes buscan una experiencia más completa y personalizada.</span><span class="en">For those looking for a more complete and personalized experience.</span></p><div class="exp-price-row"><span class="exp-price">$3,500</span><span class="exp-price-l">MXN</span></div><a href="https://ogphothos.pixieset.com/booking/" target="_blank" class="exp-cta"><span class="es">Reservar ahora</span><span class="en">Book now</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">03</div><p class="exp-label"><span class="es">Full · 90 minutos</span><span class="en">Full · 90 minutes</span></p><h3 class="exp-name"><span class="es">Lifestyle <em>/ Short</em></span><span class="en">Lifestyle <em>/ Short</em></span></h3><p class="exp-desc"><span class="es">Perfecta para contenido rápido, natural y espontáneo.</span><span class="en">Perfect for fast, natural and spontaneous content.</span></p><div class="exp-price-row"><span class="exp-price">$2,000</span><span class="exp-price-l">MXN</span></div><a href="https://ogphothos.pixieset.com/booking/" target="_blank" class="exp-cta"><span class="es">Reservar ahora</span><span class="en">Book now</span></a></div>
+    <div class="exp-card rv"><div class="exp-card-img"><img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80&fm=jpg&fit=crop" alt="" loading="lazy"/></div><div class="exp-card-overlay"></div><div class="exp-num">04</div><p class="exp-label"><span class="es">A tu medida</span><span class="en">Custom</span></p><h3 class="exp-name"><span class="es">Crea tu <em>propia sesión</em></span><span class="en">Create your <em>own session</em></span></h3><p class="exp-desc"><span class="es">Diseñamos juntos una experiencia totalmente a tu medida.</span><span class="en">We design an experience completely tailored to you.</span></p><div class="exp-price-row"><span class="exp-price">Cotiza</span><span class="exp-price-l">tu sesión</span></div><a href="#contacto" class="exp-cta"><span class="es">Solicitar cotización</span><span class="en">Request a quote</span></a></div>
   </div>
 </section>
 
 <!-- STAYS -->
 <section class="stays" id="stays">
+  <div class="stay-intro">
+    <p class="eyebrow"><span class="es">Stays en Sayulita</span><span class="en">Stays in Sayulita</span></p>
+    <h2 class="h2"><span class="es">Elige cómo quieres vivir<br><em>Sayulita.</em></span><span class="en">Choose how you want to experience<br><em>Sayulita.</em></span></h2>
+    <p class="body"><span class="es">Tres formas únicas de hospedarte y vivir la experiencia a tu manera.</span><span class="en">Three unique ways to stay and experience Sayulita your way.</span></p>
+  </div>
+  <div class="stay-types">
+    <a class="stay-type" href="#villas"><div class="stay-type-content"><h3><span class="es">Estancias<br>de una <em>habitación</em></span><span class="en">One-room<br><em>stays</em></span></h3><p><span class="es">Habitaciones cuidadosamente diseñadas para tu descanso.</span><span class="en">Thoughtfully designed rooms for your stay.</span></p></div></a>
+    <a class="stay-type" href="#villas"><div class="stay-type-content"><h3><span class="es">Estancias<br>de casa <em>completa</em></span><span class="en">Entire<br><em>homes</em></span></h3><p><span class="es">Espacios completos para ti y los tuyos.</span><span class="en">Complete spaces for you and yours.</span></p></div></a>
+    <a class="stay-type" href="#villas"><div class="stay-type-content"><h3><span class="es">Venues<br>para <em>eventos</em></span><span class="en">Venues<br>for <em>events</em></span></h3><p><span class="es">Lugares únicos para celebrar, reunir y crear.</span><span class="en">Unique places to celebrate and gather.</span></p></div></a>
+  </div>
   <div class="stays-inner">
     <div>
       <p class="eyebrow"><span class="es">Para propiedades</span><span class="en">For properties</span></p>
@@ -855,6 +1049,15 @@ footer{background:var(--ink);color:var(--bone);padding:76px 64px 38px;}
         <div class="stays-tag"><div class="st-l"><span class="es">Ubicación</span><span class="en">Location</span></div><div class="st-v">Sayulita</div></div>
         <span class="stays-loc">Sayulita · Puerto Vallarta · Nayarit</span>
       </div>
+    </div>
+  </div>
+  <div class="availability-panel" id="disponibilidad">
+    <h3><span class="es">Encuentra tu estancia <em>ideal.</em></span><span class="en">Find your <em>ideal stay.</em></span></h3>
+    <div class="availability-form">
+      <div class="availability-field"><label for="stayCheckin"><span class="es">Llegada</span><span class="en">Check-in</span></label><input id="stayCheckin" type="date"></div>
+      <div class="availability-field"><label for="stayCheckout"><span class="es">Salida</span><span class="en">Check-out</span></label><input id="stayCheckout" type="date"></div>
+      <div class="availability-field"><label for="stayGuests"><span class="es">Huéspedes</span><span class="en">Guests</span></label><select id="stayGuests"><option>2 personas</option><option>3 personas</option><option>4 personas</option><option>5+ personas</option></select></div>
+      <a class="availability-btn" href="#villas"><span class="es">Buscar disponibilidad</span><span class="en">Search availability</span> →</a>
     </div>
   </div>
 </section>
@@ -1142,6 +1345,18 @@ _loadProperties();
 const cur=document.getElementById('cur'),ring=document.getElementById('ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function(){
+  const hero=document.querySelector('.hero-reference');
+  if(!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*14;
+    const y=((e.clientY-r.top)/r.height-.5)*8;
+    hero.style.setProperty('--hero-x',x+'px');
+    hero.style.setProperty('--hero-y',y+'px');
+  });
+  hero.addEventListener('mouseleave',()=>{hero.style.setProperty('--hero-x','0px');hero.style.setProperty('--hero-y','0px');});
+})();
 (function tick(){rx+=(mx-rx)*.11;ry+=(my-ry)*.11;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick);})();
 window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>55));
 document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{const l=b.dataset.l;document.body.dataset.lang=l;document.querySelectorAll('.lang-btn').forEach(x=>x.classList.toggle('active',x.dataset.l===l));}));
